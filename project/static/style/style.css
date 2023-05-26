@@ -1,0 +1,14 @@
+@import url('accounts.css');
+@import url('home.css');
+
+body.home {
+    background-image: url("/static/images/home_background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body.accounts {
+    background-image: url("/static/images/auth_image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

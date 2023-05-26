@@ -1,16 +1,25 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 
-from project.accounts.forms import NewUserForm
+from project.accounts.forms import RegistrationForm
 
 
 # Create your views here.
+class HomeView(TemplateView):
+    template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+        return context
+
+
 class RegistrationView(CreateView):
     template_name = 'accounts/register.html'
-    form_class = NewUserForm
-    success_url = reverse_lazy('home')  # Redirect to the login page after successful registration
+    form_class = RegistrationForm
+    success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
