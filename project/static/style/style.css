@@ -3,6 +3,7 @@
 
 body.home {
     background-image: url("/static/images/home_background.jpg");
+    background-color: darkcyan;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -11,4 +12,45 @@ body.accounts {
     background-image: url("/static/images/auth_image.png");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+header nav {
+    background-color: rgba(0,82,198,0.2);
+    border-radius: 3px;
+    width: auto;
+    height: auto;
+}
+
+
+header .login    {
+    margin-left: auto ;
+}
+
+header nav ul {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
+header nav li {
+    margin: 0 10px;
+}
+
+header nav li a {
+    font-family: Alef, sans-serif;
+    display: block;
+    color: rgba(11, 6, 79, 0.77);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+}
+
+header nav li a:hover {
+    background-color: #ffffff;
 }
