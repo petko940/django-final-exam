@@ -21,14 +21,14 @@ section.errors h1 {
 }
 
 body.home {
-    background-image: url("/static/images/home_background.png");
+    background-image: url("/static/images/bg2.png");
     /*background-color: darkcyan;*/
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 body.accounts {
-    background-image: url("/static/images/auth_image.png");
+    background-image: url("/static/images/bg1.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
