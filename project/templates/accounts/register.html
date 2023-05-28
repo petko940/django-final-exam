@@ -23,6 +23,7 @@
             <div class="form">
                 {{ form.password2 }}
             </div>
+            <button type="submit">Register</button>
 
             {% if form.errors %}
                 <div class="errorlist">
@@ -33,8 +34,6 @@
                     {% endfor %}
                 </div>
             {% endif %}
-        
-            <button type="submit">Register</button>
         </form>
 
     </section>

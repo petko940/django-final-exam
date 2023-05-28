@@ -2,8 +2,8 @@
 @import url('home.css');
 
 body.home {
-    background-image: url("/static/images/home_background.jpg");
-    background-color: darkcyan;
+    background-image: url("/static/images/home_background.png");
+    /*background-color: darkcyan;*/
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -15,19 +15,21 @@ body.accounts {
 }
 
 header nav {
-    background-color: rgba(0,82,198,0.2);
+    background-color: rgba(0, 82, 198, 0.1);
     border-radius: 3px;
     width: auto;
     height: auto;
 }
 
+header .logout {
+    margin-left: auto;
+}
 
-header .login    {
-    margin-left: auto ;
+header .login {
+    margin-left: auto;
 }
 
 header nav ul {
-    font-family: 'Source Sans Pro', sans-serif;
     font-size: 20px;
     margin: 0;
     padding: 0;

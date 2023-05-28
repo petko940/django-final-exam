@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    Asd
+    {% if user.is_authenticated %}
+        Username: {{ user.username }}
+    {% else %}
+        Login first
+    {% endif %}
+
 {% endblock %}

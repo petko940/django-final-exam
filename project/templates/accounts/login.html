@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body_class %}
+    accounts
+{% endblock %}
+
+{% block content %}
+
+    <section class="auth">
+        <h2>Login</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form }}
+
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+{% endblock %}

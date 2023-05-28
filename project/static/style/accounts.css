@@ -43,8 +43,8 @@
     background-color: #45a049;
 }
 
-input[type="text"],
-input[type="password"] {
+.auth input[type="text"],
+.auth input[type="password"] {
     text-align: center;
     margin: 20px;
     display: block;
@@ -63,6 +63,6 @@ input[type="password"] {
 }
 
 .errorlist p {
-  margin: 5px 0;
-  color: red;
+    margin: 5px 0;
+    color: red;
 }

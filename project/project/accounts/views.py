@@ -1,9 +1,10 @@
 from django.contrib.auth import login, authenticate
-from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView
 
-from project.accounts.forms import RegistrationForm
+from project.accounts.forms import RegistrationForm, LoginForm
 
 
 # Create your views here.
@@ -36,5 +37,15 @@ class RegistrationView(CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect('home')  # Redirect to home page or any other desired URL
+            return redirect('home')
         return super().dispatch(request, *args, **kwargs)
+
+
+class SignInView(LoginView):
+    template_name = 'accounts/login.html'
+    redirect_authenticated_user = True
+    form_class = LoginForm
+
+
+class Logout(LogoutView):
+    pass
