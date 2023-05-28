@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <section class="errors">
+        <h1>404 Error - Page Not Found</h1>
+        <div class="error-image">
+            <img src="{% static 'images/404.gif' %}" alt="">
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,6 +1,25 @@
 @import url('accounts.css');
 @import url('home.css');
 
+
+section.errors h1 {
+    text-align: center;
+    color: white;
+    font-family: "Gentium Book Basic", sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.error-image {
+    display: flex;
+    justify-content: center;
+}
+
+.error-image img {
+    margin: auto;
+    height: 550px
+}
+
 body.home {
     background-image: url("/static/images/home_background.png");
     /*background-color: darkcyan;*/
@@ -44,6 +63,7 @@ header nav li {
 
 header nav li a {
     font-family: Alef, sans-serif;
+    font-weight: bold;
     display: block;
     color: rgba(11, 6, 79, 0.77);
     text-align: center;
@@ -55,4 +75,8 @@ header nav li a {
 
 header nav li a:hover {
     background-color: #ffffff;
+}
+
+header .home img {
+    height: 20px;
 }
