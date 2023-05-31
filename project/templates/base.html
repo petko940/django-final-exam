@@ -28,7 +28,7 @@
             <li><a href="#">Test</a></li>
 
             {% if user.is_authenticated %}
-                <li class="profile"><a href="#">Profile</a></li>
+                <li class="profile"><a href="{% url 'profile' %}">Profile</a></li>
                 <a href="{% url 'logout' %}"> <img src="{% static 'images/logout-image.png' %}" class="logout-image" alt="Logout"></a>
             {% else %}
                 <li class="login"><a href="{% url 'login' %}">Login</a></li>

@@ -28,7 +28,8 @@ body.home {
 }
 
 body.accounts {
-    background-image: url("/static/images/bg1.png");
+    /*background-image: url("/static/images/bg1.png");*/
+    background-image: url("../images/bg1.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
