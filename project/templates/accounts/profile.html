@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Profile view</h1>
+<a href="{% url 'profile_delete' %}">delete</a>
+<a href="{% url 'profile_change_username' %}">change username</a>
+<a href="{% url 'profile_change_password' %}">change password</a>
+
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
-from django.urls import path
-from project.accounts.views import RegistrationView, HomeView, Logout, SignInView, ProfileView
+from django.urls import path, include
+from project.accounts.views import RegistrationView, HomeView, Logout, SignInView, ProfileView, DeleteProfileView, \
+    ProfileUsernameChangeView, ProfilePasswordChangeView
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
@@ -13,8 +14,11 @@ urlpatterns = [
     path('login/', lambda request: redirect('/login'), name='login'),
 
     # change
-    path('profile', ProfileView.as_view(), name='profile'),
-    # path('/profile/change-username', ProfileChangeUsernameView.as_view(), name='change_username'),
-    # path('/profile/change-password', ProfileChangePasswordView.as_view(), name='change_password'),
-
+    # path('profile', ProfileView.as_view(), name='profile'),
+    path('profile/', include([
+        path('', ProfileView.as_view(), name='profile'),
+        path('delete', DeleteProfileView.as_view(), name='profile_delete'),
+        path('change-username', ProfileUsernameChangeView.as_view(), name='profile_change_username'),
+        path('change-password', ProfilePasswordChangeView.as_view(), name='profile_change_password'),
+    ]))
 ]

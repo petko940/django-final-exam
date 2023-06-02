@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <section class="profile-css">
+        <h1>Update Username</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update</button>
+            <a href="{% url 'profile' %}">back</a>
+
+        </form>
+
+    </section>
+
+{% endblock %}

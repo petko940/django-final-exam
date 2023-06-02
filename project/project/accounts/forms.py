@@ -1,7 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 
 
@@ -39,3 +38,35 @@ class LoginForm(AuthenticationForm):
 
     password = forms.CharField(label='',
                                widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+
+
+class UsernameChangeForm(UserChangeForm):
+    username = forms.CharField(label='',
+                               widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['password'].widget = forms.HiddenInput()
+        self.fields['password'].help_text = ''
+
+    class Meta:
+        model = User
+        fields = ('username',)
+
+
+class AccountPasswordChangeForm(PasswordChangeForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['old_password'].label = ''
+        self.fields['old_password'].widget.attrs['placeholder'] = 'Old Password'
+        self.fields['old_password'].help_text = ''
+        self.fields['new_password1'].label = ''
+        self.fields['new_password1'].widget.attrs['placeholder'] = 'New Password'
+        self.fields['new_password1'].help_text = ''
+        self.fields['new_password2'].label = ''
+        self.fields['new_password2'].widget.attrs['placeholder'] = 'Confirm New Password'
+        self.fields['new_password2'].help_text = ''
+
+    class Meta:
+        model = User
