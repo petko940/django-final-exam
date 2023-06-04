@@ -31,7 +31,7 @@
 
 .auth form button[type="submit"] {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #7a96ff;
     color: white;
     border: none;
     border-radius: 4px;
@@ -40,7 +40,7 @@
 }
 
 .auth form button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #5063a2;
 }
 
 .auth input[type="text"],
@@ -56,56 +56,134 @@
 }
 
 .errorlist {
-    font-size: 20px;
+    font-size: 25px;
     text-align: center;
     color: #a90000;
     list-style-type: none;
 }
 
 .errorlist p {
-    margin: 5px 0;
-    color: red;
+    margin: 12px 0;
+    color: #a90000;
+
 }
 
 .profile-css {
-        max-width: 500px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-    }
+    width: 500px;
+    height: auto;
+    padding: 20px;
+    background-color: rgba(240, 240, 240, 0.2);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px auto;
+}
 
-    .profile-css h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
+.profile-css h1 {
+    font-family: Verdana, sans-serif;
+    margin-top: 0;
+    text-align: center;
+    padding: 10px;
+}
 
-    .profile-css form {
-        margin-bottom: 20px;
-    }
+.profile-css h3 {
+    font-family: Verdana, sans-serif;
+    font-size: 17px;
+    margin-top: 0;
+    text-align: center;
+}
 
-    .profile-css form .form {
-        margin-bottom: 10px;
-    }
+.profile-css form {
+    margin-top: 20px;
+}
 
-    .profile-css form .errorlist {
-        font-size: 20px;
-        text-align: center;
-        color: #a90000;
-        list-style-type: none;
-    }
+.profile-css .form {
+    margin-bottom: 10px;
+}
 
-    .profile-css form .errorlist .error {
-        margin: 5px 0;
-        color: red;
-    }
+.profile-css .form.last-field {
+    margin-bottom: 200px;
+}
 
-    .profile-css form button[type="submit"] {
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
+.profile-css label {
+    display: block;
+    font-weight: bold;
+}
+
+.profile-css input[type="text"],
+.profile-css input[type="password"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    height: auto;
+}
+
+.profile-css input {
+    font-size: 20px;
+}
+
+.profile-css .errorlist {
+    color: red;
+    margin-top: 10px;
+}
+
+.profile-css .error {
+    margin-bottom: 5px;
+}
+
+/* button */
+.profile-css .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.profile-css .buttons button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #37b73b;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.profile-css .buttons button[type="submit"]:hover {
+    background-color: rgb(77, 213, 81);
+}
+
+.profile-css .buttons a {
+    padding: 10px 20px;
+    background-color: #68b3c0;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.profile-css .buttons a:hover {
+    background-color: #7fd0de;
+}
+
+.profile-css .buttons button.delete-acc {
+    background-color: #a80000;
+}
+
+.profile-css .buttons button.delete-acc:hover {
+    background-color: #c90000;
+}
+
+.profile-details .button {
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: #058dff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

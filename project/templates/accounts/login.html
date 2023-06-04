@@ -12,9 +12,21 @@
         <form method="post">
             {% csrf_token %}
 
-            {{ form }}
+            <div>
+                {{ form.username }}
+            </div>
+            <div>
+                {{ form.password }}
+            </div>
 
             <button type="submit">Login</button>
+
+            {% for error in form.non_field_errors %}
+                <div class="errorlist">
+                    <p>{{ error }}</p></div>
+            {% endfor %}
+
+
         </form>
     </section>
 

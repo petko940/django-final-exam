@@ -7,9 +7,24 @@
 
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Update</button>
-            <a href="{% url 'profile' %}">back</a>
+            <div class="form">
+                {{ form.username }}
+            </div>
+
+            <div class="buttons">
+                <a href="{% url 'profile' %}">Back</a>
+                <button type="submit">Update</button>
+            </div>
+
+            {% if form.errors %}
+                <div class="errorlist">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
 
         </form>
 

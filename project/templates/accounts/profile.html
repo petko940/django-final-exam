@@ -2,9 +2,11 @@
 
 {% block content %}
 
-<h1>Profile view</h1>
-<a href="{% url 'profile_delete' %}">delete</a>
-<a href="{% url 'profile_change_username' %}">change username</a>
-<a href="{% url 'profile_change_password' %}">change password</a>
+    <h1>Profile view</h1>
+    <div class="profile-details">
+        <a href="{% url 'profile_delete' %}" class="button">delete</a>
+        <a href="{% url 'profile_change_username' %}" class="button">change username</a>
+        <a href="{% url 'profile_change_password' %}" class="button">change password</a>
+    </div>
 
 {% endblock %}

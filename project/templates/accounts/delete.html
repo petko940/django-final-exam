@@ -3,13 +3,16 @@
 {% block content %}
 
     <section class="profile-css">
-        <h2>Confirm Account Deletion</h2>
-        <p>Are you sure you want to delete your account?</p>
+        <h1>Confirm Account Deletion</h1>
+        <h3>Are you sure you want to delete your account?</h3>
 
         <form method="post">
             {% csrf_token %}
-            <button type="submit">Delete</button>
-            <a href="{% url 'profile' %}">Cancel</a>
+
+            <div class="buttons">
+                <a href="{% url 'profile' %}">Cancel</a>
+                <button class="delete-acc" type="submit">Delete</button>
+            </div>
         </form>
 
     </section>
