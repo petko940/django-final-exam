@@ -50,7 +50,7 @@ header .login {
 }
 
 header nav ul {
-    font-size: 20px;
+    font-size: 25px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -61,6 +61,7 @@ header nav ul {
 header nav li {
     margin: 0 10px;
 }
+
 
 header nav li a {
     font-family: Alef, sans-serif;
@@ -80,14 +81,14 @@ header nav li a:hover {
 }
 
 header .home img {
-    height: 20px;
-    margin-bottom: -3px;
+    height: 30px;
+    margin-bottom: -6px;
 }
 
 header .logout-image {
     text-align: center;
     height: 41px;
-    margin-top: 7px;
+    margin-top: 10px;
 }
 
 

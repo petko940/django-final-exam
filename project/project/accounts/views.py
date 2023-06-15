@@ -3,22 +3,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.shortcuts import redirect
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView, DeleteView, UpdateView
 
 from project.accounts.forms import RegistrationForm, LoginForm, UsernameChangeForm, AccountPasswordChangeForm
 
 
 # Create your views here.
-class HomeView(TemplateView):
-    template_name = 'home.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['user'] = self.request.user
-        return context
-
-
 class RegistrationView(CreateView):
     template_name = 'accounts/register.html'
     form_class = RegistrationForm
