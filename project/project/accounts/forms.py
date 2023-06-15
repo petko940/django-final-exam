@@ -5,17 +5,23 @@ from django.core.validators import MinLengthValidator
 
 
 class RegistrationForm(UserCreationForm):
-    username = forms.CharField(label='',
-                               widget=forms.TextInput(attrs={'placeholder': 'Username'}),
-                               max_length=20,
-                               validators=[MinLengthValidator(3, "Username must be at least 3 characters long.")])
+    username = forms.CharField(
+        label='',
+        widget=forms.TextInput(attrs={'placeholder': 'Username'}),
+        max_length=20,
+        validators=[MinLengthValidator(3, "Username must be at least 3 characters long.")]
+    )
 
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}),
-                                max_length=20,
-                                label='',
-                                validators=[MinLengthValidator(6, 'Password must be at least 6 characters long.')])
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}),
-                                label='', )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'Password'}),
+        max_length=20,
+        label='',
+        validators=[MinLengthValidator(6, 'Password must be at least 6 characters long.')]
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}),
+        label='',
+    )
 
     def clean(self):
         cleaned_data = super().clean()
@@ -33,18 +39,26 @@ class RegistrationForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(label='',
-                               widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    username = forms.CharField(
+        label='',
+        widget=forms.TextInput(attrs={'placeholder': 'Username'})
+    )
 
-    password = forms.CharField(label='',
-                               widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+    password = forms.CharField(
+        label='',
+        widget=forms.PasswordInput(attrs={'placeholder': 'Password'})
+    )
+
+    def clean_username(self):
+        return self.cleaned_data['username'].lower()
 
 
 class UsernameChangeForm(UserChangeForm):
-    username = forms.CharField(label='',
-                               widget=forms.TextInput(attrs={'placeholder': 'Username'}),
-                               validators=[MinLengthValidator(3, "Username must be at least 3 characters long.")]
-                               )
+    username = forms.CharField(
+        label='',
+        widget=forms.TextInput(attrs={'placeholder': 'Username'}),
+        validators=[MinLengthValidator(3, "Username must be at least 3 characters long.")]
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

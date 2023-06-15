@@ -1,4 +1,4 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
@@ -22,8 +22,11 @@ class RegistrationView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        username = form.cleaned_data.get('username')
+        username = form.cleaned_data.get('username').lower()
         password = form.cleaned_data.get('password1')
+        user = get_user_model()
+        user.objects.filter(username=self.object.username).update(username=username)
+
         user = authenticate(username=username, password=password)
         login(self.request, user)
         return response
