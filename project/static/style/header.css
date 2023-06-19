@@ -1,0 +1,56 @@
+header nav {
+    background-color: rgba(0, 82, 198, 0.1);
+    border-radius: 3px;
+    width: auto;
+    height: auto;
+}
+
+header .profile {
+    margin-left: auto;
+}
+
+header .login {
+    margin-left: auto;
+}
+
+header nav ul {
+    font-size: 25px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
+header nav li {
+    margin: 0 10px;
+}
+
+
+header nav li a {
+    font-family: Alef, sans-serif;
+    font-weight: bold;
+    display: block;
+    align-items: center;
+    color: rgba(11, 6, 79, 0.77);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+}
+
+header nav li a:hover {
+    background-color: #ffffff;
+}
+
+header .home img {
+    height: 30px;
+    margin-bottom: -6px;
+}
+
+header .logout-image {
+    text-align: center;
+    height: 41px;
+    margin-top: 10px;
+}
