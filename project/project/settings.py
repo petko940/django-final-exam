@@ -142,3 +142,4 @@ LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
 
 # APPEND_SLASH = False  # test
+
