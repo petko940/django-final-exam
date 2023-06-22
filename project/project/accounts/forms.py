@@ -13,13 +13,17 @@ class RegistrationForm(UserCreationForm):
     )
 
     password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': 'Password'}),
+        widget=forms.PasswordInput(
+            attrs={'placeholder': 'Password'}
+        ),
         max_length=20,
         label='',
         validators=[MinLengthValidator(6, 'Password must be at least 6 characters long.')]
     )
     password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}),
+        widget=forms.PasswordInput(
+            attrs={'placeholder': 'Confirm Password'}
+        ),
         label='',
     )
 
@@ -41,12 +45,16 @@ class RegistrationForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'Username'})
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Username'}
+        )
     )
 
     password = forms.CharField(
         label='',
-        widget=forms.PasswordInput(attrs={'placeholder': 'Password'})
+        widget=forms.PasswordInput(
+            attrs={'placeholder': 'Password'}
+        )
     )
 
     def clean_username(self):
@@ -71,14 +79,10 @@ class UsernameChangeForm(UserChangeForm):
 
 
 class AccountPasswordChangeForm(PasswordChangeForm):
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['old_password'].label = ''
         self.fields['old_password'].widget.attrs['placeholder'] = 'Old Password'
-        self.fields['new_password1'].label = ''
         self.fields['new_password1'].widget.attrs['placeholder'] = 'New Password'
-        self.fields['new_password2'].label = ''
         self.fields['new_password2'].widget.attrs['placeholder'] = 'Confirm New Password'
 
     class Meta:
