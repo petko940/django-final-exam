@@ -10,7 +10,16 @@ from project.accounts.forms import RegistrationForm, LoginForm, UsernameChangeFo
 
 
 # Create your views here.
-class RegistrationView(CreateView):
+class RedirectIfNotLogged(LoginRequiredMixin):
+    redirect_to = "home"
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect(self.redirect_to)
+        return super().dispatch(request, *args, **kwargs)
+
+
+class RegistrationView(RedirectIfNotLogged, CreateView):
     template_name = 'accounts/register.html'
     form_class = RegistrationForm
     success_url = reverse_lazy('home')
@@ -41,50 +50,37 @@ class SignInView(LoginView):
     template_name = 'accounts/login.html'
     redirect_authenticated_user = True
     form_class = LoginForm
+    success_url = reverse_lazy('home')
 
 
 class Logout(LogoutView):
     pass
 
 
-class ProfileView(LoginRequiredMixin, TemplateView):
+class ProfileView(RedirectIfNotLogged, TemplateView):
     template_name = 'accounts/profile.html'
-
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect(f"/login?next=/profile")
-        return super().dispatch(request, *args, **kwargs)
+    redirect_to = "/login?next=/profile"
 
 
-class DeleteProfileView(LoginRequiredMixin, DeleteView):
+class DeleteProfileView(RedirectIfNotLogged, DeleteView):
     model = User
     template_name = 'accounts/delete.html'
     success_url = reverse_lazy('home')
+    redirect_to = "/login?next=/profile/delete"
 
     def get_object(self, queryset=None):
         return self.request.user
 
 
-class ProfileUsernameChangeView(UpdateView):
+class ProfileUsernameChangeView(RedirectIfNotLogged, UpdateView):
     template_name = 'accounts/change-username.html'
     form_class = UsernameChangeForm
     success_url = reverse_lazy('profile')
-
-    def get_object(self, queryset=None):
-        return self.request.user
-
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect(f"/login?next=/profile/change-username")
-        return super().dispatch(request, *args, **kwargs)
+    redirect_to = "/login?next=/profile/change-username"
 
 
-class ProfilePasswordChangeView(PasswordChangeView):
+class ProfilePasswordChangeView(RedirectIfNotLogged, PasswordChangeView):
     template_name = 'accounts/change-password.html'
     form_class = AccountPasswordChangeForm
     success_url = reverse_lazy('profile')
-
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect(f"/login?next=/profile/change-password")
-        return super().dispatch(request, *args, **kwargs)
+    redirect_to = "/login?next=/profile/change-password"
