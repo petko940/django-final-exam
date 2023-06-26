@@ -10,7 +10,7 @@
             {% csrf_token %}
 
             <div class="buttons">
-                <a href="{% url 'profile' %}">Cancel</a>
+                <a href="{% url 'profile' user.extended_user.slug %}">Cancel</a>
                 <button class="delete-acc" type="submit">Delete</button>
             </div>
         </form>

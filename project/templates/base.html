@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
 
-    <title>Home</title>
+    <title>{% block title %} {% endblock %}</title>
 </head>
 
 <body class="{% block body_class %} home {% endblock %}">
@@ -28,7 +28,7 @@
             <li><a href="#">Motherboard</a></li>
 
             {% if user.is_authenticated %}
-                <li class="profile"><a href="{% url 'profile' %}">Profile</a></li>
+                <li class="profile"><a href="{% url 'profile' user.extended_user.slug %}">Profile</a></li>
                 <a href="{% url 'logout' %}"> <img src="{% static 'images/logout-image.png' %}" class="logout-image" alt="Logout"></a>
             {% else %}
                 <li class="login"><a href="{% url 'login' %}">Login</a></li>
