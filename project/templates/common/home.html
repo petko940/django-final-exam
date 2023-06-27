@@ -3,7 +3,6 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-    <h1>{{ user.extended_user.slug }}</h1>
 
     {% if user.is_authenticated %}
         Username: {{ user.username }}

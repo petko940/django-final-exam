@@ -194,3 +194,20 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+
+.access_denied h1 {
+    font-size: 40px;
+    text-align: center;
+    color: #006b1b;
+}
+
+.access_denied p {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.access_denied h1,p {
+    font-family: Verdana, sans-serif;
+}

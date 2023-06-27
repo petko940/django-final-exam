@@ -1,5 +1,7 @@
 {% extends 'common/../base.html' %}
 
+{% block title %} Change username {% endblock %}
+
 {% block content %}
 
     <section class="profile-css">
@@ -12,7 +14,7 @@
             </div>
 
             <div class="buttons">
-                <a href="{% url 'profile' user.extended_user.slug %}">Back</a>
+                <a href="{% url 'profile' user.username %}">Back</a>
                 <button type="submit">Update</button>
             </div>
 

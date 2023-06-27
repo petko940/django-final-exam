@@ -6,13 +6,13 @@
 
     <h1>Profile view</h1>
 
-    <h2>Username: {{ extendeduser.user }}</h2>
-    <h2>Slug: {{ extendeduser.slug }}</h2>
-
-    <div class="profile-details">
-        <a href="{% url 'profile_delete' user.extended_user.slug %}" class="button">delete</a>
-        <a href="{% url 'profile_username_change_view' user.extended_user.slug%}" class="button">change username</a>
-        <a href="{% url 'profile_change_password' user.extended_user.slug %}" class="button">change password</a>
-    </div>
+     {% if request.user.username == user.username %}
+        <div class="profile-details">
+            <a href="{% url 'profile_delete' request.user.username %}" class="button">delete</a>
+            <a href="{% url 'profile_username_change_view' request.user.username %}" class="button">change
+                username</a>
+            <a href="{% url 'profile_change_password' request.user.username %}" class="button">change password</a>
+        </div>
+    {% endif %}
 
 {% endblock %}
