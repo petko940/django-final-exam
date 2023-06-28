@@ -17,7 +17,7 @@ urlpatterns = [
 
     path('access-denied/', access_denied_view, name='access_denied_view'),
 
-    path('<username>/', include([
+    path('profile/<username>/', include([
         path('', ProfileView.as_view(), name='profile'),
         path('delete/', DeleteProfileView.as_view(), name='profile_delete'),
         path('change-username/', profile_username_change_view, name='profile_username_change_view'),

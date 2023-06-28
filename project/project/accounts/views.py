@@ -51,7 +51,7 @@ class Logout(LogoutView):
     pass
 
 
-class ProfileView(LoginRequiredMixin, DetailView):
+class ProfileView(DetailView):
     template_name = 'accounts/profile.html'
     model = User
     slug_field = 'username'

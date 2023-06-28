@@ -21,14 +21,14 @@
                 <img src="{% static 'images/home-image.png' %}" alt="Home"/></a>
             </li>
 
-            <li><a href="#">CPU</a></li>
+            <li><a href="{% url 'home_cpu' %}">CPU</a></li>
             <li><a href="#">GPU</a></li>
             <li><a href="#">RAM</a></li>
             <li><a href="#">Memory</a></li>
             <li><a href="#">Motherboard</a></li>
 
-            {% if user.is_authenticated %}
-                <li class="profile"><a href="{% url 'profile' username=request.user.username %}">Profile</a></li>
+            {% if request.user.is_authenticated %}
+                <li class="profile"><a href="{% url 'profile' username=user.username %}">Profile</a></li>
                 <a href="{% url 'logout' %}"> <img src="{% static 'images/logout-image.png' %}" class="logout-image" alt="Logout"></a>
             {% else %}
                 <li class="login"><a href="{% url 'login' %}">Login</a></li>
