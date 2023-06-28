@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Choose CPU {% endblock %}
+
+{% block content %}
+
+    <form>
+        {{ form.as_p }}
+        <input type="submit" value="Search">
+    </form>
+
+    {% if cpus %}
+        <h2>Matching CPUs:</h2>
+        <ul>
+            {% for cpu in cpus %}
+                <li>{{ cpu.name }} - Brand: {{ cpu.brand }}, Cores: {{ cpu.cores }}, Threads: {{ cpu.threads }}, Max
+                    Base Frequency: {{ cpu.base_frequency }}GHz, Turbo Frequency: {{ cpu.max_turbo_frequency }}GHz,
+                    TDP: {{ cpu.tdp }}W, Cache: {{ cpu.cache }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2>CPU not found with given parameters</h2>
+    {% endif %}
+
+{% endblock %}
+
