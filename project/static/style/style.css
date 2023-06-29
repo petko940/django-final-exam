@@ -2,23 +2,23 @@
 @import url('home.css');
 @import url('header.css');
 
-section.errors h1 {
-    text-align: center;
-    color: white;
-    font-family: "Gentium Book Basic", sans-serif;
-    font-size: 30px;
-    font-weight: bold;
-}
+/*section.errors h1 {*/
+/*    text-align: center;*/
+/*    color: white;*/
+/*    font-family: "Gentium Book Basic", sans-serif;*/
+/*    font-size: 30px;*/
+/*    font-weight: bold;*/
+/*}*/
 
-.error-image {
-    display: flex;
-    justify-content: center;
-}
+/*.error-image {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
 
-.error-image img {
-    margin: auto;
-    height: 550px
-}
+/*.error-image img {*/
+/*    margin: auto;*/
+/*    height: 550px*/
+/*}*/
 
 body.home {
     background-image: url("/static/images/bg2.png");

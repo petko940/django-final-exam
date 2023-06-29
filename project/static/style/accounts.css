@@ -62,17 +62,16 @@
     border-radius: 5px;
 }
 
-.errorlist {
+.auth-errors .errorlist {
     font-size: 25px;
     text-align: center;
     color: #a90000;
     list-style-type: none;
 }
 
-.errorlist p {
+.auth-errors .errorlist p {
     margin: 12px 0;
     color: #a90000;
-
 }
 
 .profile-css {

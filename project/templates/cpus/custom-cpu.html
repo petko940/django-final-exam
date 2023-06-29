@@ -4,11 +4,14 @@
 
 {% block content %}
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <section class="cpus">
+        <form method="POST">
 
-        <button type="submit">Create</button>
-    </form>
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">Create</button>
+        </form>
+    </section>
 
 {% endblock %}

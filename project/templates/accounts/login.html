@@ -20,13 +20,13 @@
             </div>
 
             <button type="submit">Login</button>
-
-            {% for error in form.non_field_errors %}
-                <div class="errorlist">
-                    <p>{{ error }}</p>
-                </div>
-            {% endfor %}
-
+            <div class="auth-errors">
+                {% for error in form.non_field_errors %}
+                    <div class="errorlist">
+                        <p>{{ error }}</p>
+                    </div>
+                {% endfor %}
+            </div>
 
         </form>
     </section>
