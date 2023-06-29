@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from django.db import models
 
 
@@ -23,7 +23,7 @@ class AllCpus(models.Model):
         blank=True,
         null=True,
         validators=[
-            MinValueValidator(1, "asd"),
+            MinValueValidator(1),
             MaxValueValidator(128),
         ],
     )
@@ -52,7 +52,10 @@ class AllCpus(models.Model):
 
 class CustomCpu(models.Model):
     name = models.CharField(
-        max_length=30
+        max_length=30,
+        validators=[
+            MinLengthValidator(5,'CPU name should be at least 5 characters long!'),
+        ]
     )
     manufacturer = models.CharField(
         max_length=30
@@ -63,11 +66,16 @@ class CustomCpu(models.Model):
     )
     number_of_cores = models.PositiveIntegerField(
         validators=[
-            MinValueValidator(1),
-            MaxValueValidator(512),
-        ]
+            MinValueValidator(1, 'Choose cores between 1 and 512!'),
+            MaxValueValidator(512, 'Choose cores between 1 and 512!'),
+        ],
     )
-    cache_size = models.PositiveIntegerField()
+    cache_size = models.PositiveIntegerField(
+        validators=[
+            MinValueValidator(1, 'Choose cache size between 1 and 1024MB!'),
+            MaxValueValidator(1024, 'Choose cache size between 1 and 1024MB!')
+        ],
+    )
     max_ram = models.CharField(
         choices=(
             ('1GB', '1GB'),
