@@ -16,6 +16,13 @@
                 <li>{{ cpu.name }} - Brand: {{ cpu.brand }}, Cores: {{ cpu.cores }}, Threads: {{ cpu.threads }}, Max
                     Base Frequency: {{ cpu.base_frequency }}GHz, Turbo Frequency: {{ cpu.max_turbo_frequency }}GHz,
                     TDP: {{ cpu.tdp }}W, Cache: {{ cpu.cache }}</li>
+
+                <form method="post" action="{% url 'choose_cpu' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="cpu_id" value="{{ cpu.id }}">
+                    <input type="submit" value="Choose">
+                </form>
+
             {% endfor %}
         </ul>
     {% else %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} CPU Info {% endblock %}
+
+{% block content %}
+
+    <form method="post" action="{% url 'delete_cpu' pk=object.pk %}">
+        {% csrf_token %}
+
+        {{ form }}
+
+        <input type="submit" value="Delete">
+    </form>
+
+
+    <h1>CPU Information:</h1>
+
+    {% if cpu_info %}
+        <p>Brand: {{ cpu_info.brand }}</p>
+        <p>Name: {{ cpu_info.name }}</p>
+        <p>Cores: {{ cpu_info.cores }}</p>
+        <p>Threads: {{ cpu_info.threads }}</p>
+        <p>Base frequency: {{ cpu_info.base_frequency }}GHz</p>
+        <p>Max turbo frequency: {{ cpu_info.max_turbo_frequency }}GHz</p>
+        <p>TDP: {{ cpu_info.tdp }}W</p>
+
+    {% else %}
+
+        <p>Name: {{ custom_cpu_info.name }}</p>
+        <p>Manufacturer: {{ custom_cpu_info.manufacturer }}</p>
+        <p>Clock speed: {{ custom_cpu_info.clock_speed }}GHz</p>
+        <p>Number cores: {{ custom_cpu_info.number_of_cores }}</p>
+        <p>Cache size: {{ custom_cpu_info.cache_size }}MB</p>
+        <p>Max RAM: {{ custom_cpu_info.max_ram }}</p>
+    {% endif %}
+
+{% endblock %}

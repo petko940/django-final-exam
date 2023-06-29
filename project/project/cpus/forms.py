@@ -1,6 +1,6 @@
 from django import forms
 
-from project.cpus.models import AllCpus
+from project.cpus.models import AllCpus, ChosenCpus, CustomCpu
 
 
 class BaseCpuForm(forms.ModelForm):
@@ -26,3 +26,14 @@ class ChooseCpuListForm(BaseCpuForm):
             'tdp'
         )
 
+
+class CustomCpuForm(forms.ModelForm):
+    class Meta:
+        model = CustomCpu
+        fields = "__all__"
+
+
+class DeleteCpuForm(BaseCpuForm):
+    class Meta:
+        model = ChosenCpus
+        fields = '__all__'

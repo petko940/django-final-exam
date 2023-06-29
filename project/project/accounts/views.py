@@ -11,6 +11,7 @@ from django.utils.text import slugify
 from django.views.generic import CreateView, TemplateView, DeleteView, UpdateView, FormView, DetailView, RedirectView
 
 from project.accounts.forms import RegistrationForm, LoginForm, UsernameChangeForm, AccountPasswordChangeForm
+from project.cpus.models import ChosenCpus
 
 
 # Create your views here.
@@ -56,6 +57,14 @@ class ProfileView(DetailView):
     model = User
     slug_field = 'username'
     slug_url_kwarg = 'username'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        profile_user = User.objects.get(username=self.kwargs['username'])
+        context['cpus'] = ChosenCpus.objects.filter(user=profile_user)
+
+        return context
 
 
 class DeleteProfileView(LoginRequiredMixin, DeleteView):
