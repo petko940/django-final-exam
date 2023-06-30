@@ -1,0 +1,51 @@
+.cpus {
+    margin: 20px;
+}
+
+.cpus .cpus-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.cpus .cpus-logo img {
+    width: 300px;
+    height: auto;
+}
+
+.cpus .cpus-content {
+    text-align: center;
+    margin-top: -130px;
+    font-size: 30px;
+}
+
+.cpus .cpus-content a {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 20px 30px;
+    color: #282869;
+    background-color: rgb(136, 165, 202);
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+    border-radius: 4px;
+}
+
+.cpus .cpus-content a:hover {
+    background-color: #ffffff;
+}
+
+.cpus .cpus-content p {
+    margin-top: 10px;
+    color: #940000;
+}
+
+.cpus .cpus-content .errorlist {
+    color: green;
+}
+
+.cpus .cpus-content .error {
+    color: green;
+}
