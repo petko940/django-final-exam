@@ -31,11 +31,11 @@ class AllCpus(models.Model):
         blank=True,
         null=True
     )
-    max_turbo_frequency = models.FloatField(
+    base_frequency = models.FloatField(
         blank=True,
         null=True
     )
-    base_frequency = models.FloatField(
+    max_turbo_frequency = models.FloatField(
         blank=True,
         null=True
     )
@@ -54,13 +54,16 @@ class CustomCpu(models.Model):
     name = models.CharField(
         max_length=30,
         validators=[
-            MinLengthValidator(5,'CPU name should be at least 5 characters long!'),
-        ]
+            MinLengthValidator(5, 'CPU name should be at least 5 characters long!'),
+        ],
     )
     manufacturer = models.CharField(
         max_length=30
     )
     clock_speed = models.DecimalField(
+        validators=[
+            MinValueValidator(0.1, 'Clock speed should be bigger than 0!'),
+        ],
         max_digits=4,
         decimal_places=2
     )
@@ -72,8 +75,8 @@ class CustomCpu(models.Model):
     )
     cache_size = models.PositiveIntegerField(
         validators=[
-            MinValueValidator(1, 'Choose cache size between 1 and 1024MB!'),
-            MaxValueValidator(1024, 'Choose cache size between 1 and 1024MB!')
+            MinValueValidator(1, 'Choose cache size between 1 and 1024(MB)!'),
+            MaxValueValidator(1024, 'Choose cache size between 1 and 1024(MB)!')
         ],
     )
     max_ram = models.CharField(
@@ -90,7 +93,8 @@ class CustomCpu(models.Model):
             ('512GB', '512GB'),
             ('1TB', '1TB'),
         ),
-        )
+        verbose_name='Max RAM',
+    )
 
 
 class ChosenCpus(models.Model):

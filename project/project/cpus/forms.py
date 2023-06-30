@@ -21,16 +21,26 @@ class ChooseCpuListForm(BaseCpuForm):
             'name',
             'cores',
             'threads',
-            'max_turbo_frequency',
             'base_frequency',
+            'max_turbo_frequency',
             'tdp'
         )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].label_suffix = ''
 
 
 class CustomCpuForm(forms.ModelForm):
     class Meta:
         model = CustomCpu
         fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.label_suffix = ''
 
 
 class DeleteCpuForm(BaseCpuForm):

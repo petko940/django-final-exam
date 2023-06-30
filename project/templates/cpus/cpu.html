@@ -1,14 +1,26 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} CPU {% endblock %}
 
 {% block content %}
 
-    {% if request.user.is_authenticated %}
-        <a href="{% url 'choose_cpu' %}">Choose CPU</a>
-        <a href="{% url 'build_cpu' %}">Build custom CPU</a>
-    {% else %}
-        <p>Login to add CPU</p>
-    {% endif %}
+
+    <section class="cpus">
+        <div class="cpus-logo">
+            <img src="{% static 'images/cpu/intel_logo.png' %}" alt="logo">
+            <img src="{% static 'images/cpu/amd_logo.png' %}" alt="">
+        </div>
+
+        <div class="cpus-content">
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'choose_cpu' %}">Choose CPU</a>
+                <a href="{% url 'build_cpu' %}">Build custom CPU</a>
+            {% else %}
+                <p>Login to add CPU</p>
+            {% endif %}
+        </div>
+    </section>
+
 
 {% endblock %}

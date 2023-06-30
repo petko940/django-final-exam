@@ -4,30 +4,62 @@
 
 {% block content %}
 
-    <form>
-        {{ form.as_p }}
-        <input type="submit" value="Search">
-    </form>
-
-    {% if cpus %}
-        <h2>Matching CPUs:</h2>
-        <ul>
-            {% for cpu in cpus %}
-                <li>{{ cpu.name }} - Brand: {{ cpu.brand }}, Cores: {{ cpu.cores }}, Threads: {{ cpu.threads }}, Max
-                    Base Frequency: {{ cpu.base_frequency }}GHz, Turbo Frequency: {{ cpu.max_turbo_frequency }}GHz,
-                    TDP: {{ cpu.tdp }}W, Cache: {{ cpu.cache }}</li>
-
-                <form method="post" action="{% url 'choose_cpu' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="cpu_id" value="{{ cpu.id }}">
-                    <input type="submit" value="Choose">
-                </form>
-
-            {% endfor %}
-        </ul>
-    {% else %}
-        <h2>CPU not found with given parameters</h2>
-    {% endif %}
+    <section class="cpus">
+        <div class="cpus-form">
+            <form>
+                {{ form.as_p }}
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div class="cpus-table">
+            <table>
+                <thead>
+                {% if cpus %}
+                    <tr>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Cores</th>
+                        <th>Threads</th>
+                        <th>Base Frequency</th>
+                        <th>Max Turbo Frequency</th>
+                        <th>TDP</th>
+                        <th>Cache</th>
+                        <th>Choose</th>
+                    </tr>
+                {% endif %}
+                </thead>
+                <tbody>
+                {% for cpu in cpus %}
+                    <tr>
+                        <td>{{ cpu.name }}</td>
+                        <td>{{ cpu.brand }}</td>
+                        <td>{{ cpu.cores }}</td>
+                        <td>{{ cpu.threads }}</td>
+                        <td>{{ cpu.base_frequency }}GHz</td>
+                        {% if cpu.max_turbo_frequency %}
+                            <td>{{ cpu.max_turbo_frequency }}GHz</td>
+                        {% else %}
+                            <td>None</td>
+                        {% endif %}
+                        <td>{{ cpu.tdp }}W</td>
+                        {% if cpu.cache %}
+                            <td>{{ cpu.cache|floatformat:0 }}MB</td>
+                        {% else %}
+                            <td>None</td>
+                        {% endif %}
+                        <td>
+                            <form method="post" action="{% url 'choose_cpu' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="cpu_id" value="{{ cpu.id }}">
+                                <input type="submit" value="Choose">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
 
 {% endblock %}
 

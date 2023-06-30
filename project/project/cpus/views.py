@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import F
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView, CreateView, DeleteView, DetailView
 
-from project.cpus.forms import ChooseCpuListForm, DeleteCpuForm
+from project.cpus.forms import ChooseCpuListForm, DeleteCpuForm, CustomCpuForm
 from project.cpus.models import AllCpus, ChosenCpus, CustomCpu
 
 
@@ -18,7 +19,8 @@ class ChooseCpuListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = ChooseCpuListForm()
+        context['form'] = ChooseCpuListForm(data=self.request.GET or None)
+
         return context
 
     def get_queryset(self):
@@ -37,7 +39,7 @@ class ChooseCpuListView(LoginRequiredMixin, ListView):
             if value:
                 queryset = queryset.filter(**{param: value})
 
-        if len(queryset) == 2666:
+        if not any(filter_params.values()):
             queryset = AllCpus.objects.none()
 
         return queryset
@@ -59,7 +61,7 @@ class ChooseCpuListView(LoginRequiredMixin, ListView):
 class BuildCustomCpuView(LoginRequiredMixin, CreateView):
     model = CustomCpu
     template_name = 'cpus/custom-cpu.html'
-    fields = '__all__'
+    form_class = CustomCpuForm
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):

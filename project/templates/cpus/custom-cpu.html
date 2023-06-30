@@ -1,17 +1,33 @@
 {% extends 'base.html' %}
 
-{% block title %} Custom CPU {% endblock %}
+{% block title %} Custom CPU Build {% endblock %}
 
 {% block content %}
 
     <section class="cpus">
-        <form method="POST">
+        <div class="cpus-form">
+            <form method="POST">
 
-            {% csrf_token %}
-            {{ form.as_p }}
+                {% csrf_token %}
+                {#                {{ form.as_p }}#}
+                {% for field in form %}
+                    <div class="form-field{% if field.errors %} has-error{% elif field.value %} has-success{% endif %}">
+{{ field.label }}
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="error-message">
+                                {{ field.errors|join:", " }}
+                            </div>
+                        {% endif %}
+            <br>
+                    </div>
+                {% endfor %}
 
-            <button type="submit">Create</button>
-        </form>
+
+                <button type="submit">Create</button>
+
+            </form>
+        </div>
     </section>
 
 {% endblock %}
