@@ -1,5 +1,5 @@
 .cpus {
-    margin: 20px;
+    margin: 10px;
 }
 
 .cpus .cpus-logo {
@@ -48,4 +48,73 @@
 
 .cpus .cpus-content .error {
     color: green;
+}
+
+.cpus .cpus-form {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.cpus form input[type="text"],
+.cpus form input[type="number"],
+.cpus form select {
+    display: block;
+    width: 250px;
+    padding: 5px 10px;
+    margin-bottom: -10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.cpus form input[type="submit"],
+.cpus form button[type="submit"],
+.cpus form button[type="reset"] {
+    display: inline-block;
+    margin-top: 2px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: rgb(22, 107, 222);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cpus form input[type="submit"]:hover,
+.cpus form button[type="submit"]:hover,
+.cpus form button[type="reset"]:hover {
+    background-color: #549aff;
+}
+
+
+.cpus-table {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cpus-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cpus-table th,
+.cpus-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.cpus-table th {
+    background-color: rgb(136, 165, 202);
+    color: #fff;
+    font-weight: bold;
+}
+
+.cpus-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
