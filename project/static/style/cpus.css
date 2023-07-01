@@ -15,9 +15,15 @@
     height: auto;
 }
 
+.cpus .text {
+    color: red;
+    text-align: center;
+    padding: 20px;
+}
+
 .cpus .cpus-content {
     text-align: center;
-    margin-top: -130px;
+    margin-top: -175px;
     font-size: 30px;
 }
 
