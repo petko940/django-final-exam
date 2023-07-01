@@ -31,11 +31,11 @@ class AllCpus(models.Model):
         blank=True,
         null=True
     )
-    base_frequency = models.FloatField(
+    max_turbo_frequency = models.FloatField(
         blank=True,
         null=True
     )
-    max_turbo_frequency = models.FloatField(
+    base_frequency = models.FloatField(
         blank=True,
         null=True
     )

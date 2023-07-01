@@ -11,25 +11,31 @@
             <div class="logo-item">
                 <img src="{% static 'images/cpu/intel_logo.png' %}" alt="logo">
                 <div class="text">
-                    <p>Best cpu</p>
+                    <p>Core i9-13900KS</p>
+                    <p>Xeon W-1290</p>
+                    <p>Core i7-13700K</p>
                 </div>
             </div>
             <div class="logo-item">
                 <img src="{% static 'images/cpu/amd_logo.png' %}" alt="">
                 <div class="text">
-                    <p>Text1</p>
+                    <p>Ryzen Threadripper 3990X</p>
+                    <p>Ryzen 9 7950X3D</p>
+                    <p>EPYC™ 9754</p>
                 </div>
             </div>
 
         </div>
 
         <div class="cpus-content">
-            {% if request.user.is_authenticated %}
-                <a href="{% url 'choose_cpu' %}">Choose CPU</a>
-                <a href="{% url 'build_cpu' %}">Build custom CPU</a>
-            {% else %}
-                <p>Login to add CPU!</p>
-            {% endif %}
+            <div class="cpu-buttons">
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'choose_cpu' %}">Choose CPU</a>
+                    <a href="{% url 'build_cpu' %}">Build custom CPU</a>
+                {% else %}
+                    <p>Login to add CPU!</p>
+                {% endif %}
+            </div>
         </div>
     </section>
 
