@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'project.common',
     'project.accounts',
     'project.cpus',
+    'project.gpus',
 ]
 
 MIDDLEWARE = [

@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('project.common.urls')),
     path('', include('project.accounts.urls')),
     path('cpu/', include('project.cpus.urls')),
+    path('gpu/', include('project.gpus.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -45,7 +45,9 @@
 
 .cpus .cpus-content p {
     margin-top: 10px;
-    color: #940000;
+    color: #500a0a;
+    font-size: 35px;
+    font-family: Menlo, sans-serif;
 }
 
 .cpus .cpus-content .errorlist {
