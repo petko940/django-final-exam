@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %} Choose GPU {% endblock %}
+
+{% block content %}
+
+    <section class="gpus">
+        <div class="gpus-form">
+            <form>
+                {{ form.as_p }}
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div class="gpus-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>
+                        <a href="?manufacturer={{ request.GET.manufacturer|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;release_year={{ request.GET.release_year|default:'' }}&amp;memory_size={{ request.GET.memory_size|default:'' }}&amp;gpu_clock={{ request.GET.gpu_clock|default:'' }}&amp;memory_clock={{ request.GET.memory_clock|default:'' }}&amp;memory_type={{ request.GET.memory_type|default:'' }}&amp;sort_by=manufacturer&amp;sort_order={{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Manufacturer</a>
+                    </th>
+                    <th>
+                        <a href="?manufacturer={{ request.GET.manufacturer|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;release_year={{ request.GET.release_year|default:'' }}&amp;memory_size={{ request.GET.memory_size|default:'' }}&amp;gpu_clock={{ request.GET.gpu_clock|default:'' }}&amp;memory_clock={{ request.GET.memory_clock|default:'' }}&amp;memory_type={{ request.GET.memory_type|default:'' }}&amp;sort_by=name&amp;sort_order={{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Name</a>
+                    </th>
+                    <th>
+                        <a href="?manufacturer={{ request.GET.manufacturer|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;release_year={{ request.GET.release_year|default:'' }}&amp;memory_size={{ request.GET.memory_size|default:'' }}&amp;gpu_clock={{ request.GET.gpu_clock|default:'' }}&amp;memory_clock={{ request.GET.memory_clock|default:'' }}&amp;memory_type={{ request.GET.memory_type|default:'' }}&amp;sort_by=release_year&amp;sort_order={{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Release Year</a>
+                    </th>
+                    <th>
+                        <a href="?manufacturer={{ request.GET.manufacturer|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;release_year={{ request.GET.release_year|default:'' }}&amp;memory_size={{ request.GET.memory_size|default:'' }}&amp;gpu_clock={{ request.GET.gpu_clock|default:'' }}&amp;memory_clock={{ request.GET.memory_clock|default:'' }}&amp;memory_type={{ request.GET.memory_type|default:'' }}&amp;sort_by=memory_size&amp;sort_order={{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Memory Size</a>
+                    </th>
+                    <th>
+                        <a href="?manufacturer={{ request.GET.manufacturer|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;release_year={{ request.GET.release_year|default:'' }}&amp;memory_size={{ request.GET.memory_size|default:'' }}&amp;gpu_clock={{ request.GET.gpu_clock|default:'' }}&amp;memory_clock={{ request.GET.memory_clock|default:'' }}&amp;memory_type={{ request.GET.memory_type|default:'' }}&amp;sort_by=gpu_clock&amp;sort_order={{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">GPU Clock</a>
+                    </th>
+                    <th>
+                        <a href="?manufacturer={{ request.GET.manufacturer|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;release_year={{ request.GET.release_year|default:'' }}&amp;memory_size={{ request.GET.memory_size|default:'' }}&amp;gpu_clock={{ request.GET.gpu_clock|default:'' }}&amp;memory_clock={{ request.GET.memory_clock|default:'' }}&amp;memory_type={{ request.GET.memory_type|default:'' }}&amp;sort_by=memory_clock&amp;sort_order={{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Memory Clock</a>
+                    </th>
+                    <th>
+                        <a href="?manufacturer={{ request.GET.manufacturer|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;release_year={{ request.GET.release_year|default:'' }}&amp;memory_size={{ request.GET.memory_size|default:'' }}&amp;gpu_clock={{ request.GET.gpu_clock|default:'' }}&amp;memory_clock={{ request.GET.memory_clock|default:'' }}&amp;memory_type={{ request.GET.memory_type|default:'' }}&amp;sort_by=memory_type&amp;sort_order={{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Memory Type</a>
+                    </th>
+                    <th>Choose</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for gpu in gpus %}
+                    <tr>
+                        <td>{{ gpu.manufacturer }}</td>
+                        <td>{{ gpu.name }}</td>
+                        <td>{{ gpu.release_year }}</td>
+                        {% if gpu.memory_size %}
+                        <td>{{ gpu.memory_size }}GB</td>
+                        {% else %}
+                        <td>{{ gpu.memory_size }}</td>
+                        {% endif %}
+                        <td>{{ gpu.gpu_clock }}MHz</td>
+                        <td>{{ gpu.memory_clock }}MHz</td>
+                        <td>{{ gpu.memory_type }}</td>
+                        <td>
+                            <form method="post" action="{% url 'choose_gpu' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="gpu_id" value="{{ gpu.id }}">
+                                <input type="submit" value="Choose">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}

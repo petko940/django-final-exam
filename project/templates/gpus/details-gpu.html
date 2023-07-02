@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} GPU Info {% endblock %}
+
+{% block content %}
+
+    <h1>GPU Information:</h1>
+
+    <p>Name: {{ gpu_details.manufacturer }} {{ gpu_details.name }}</p>
+    {% if gpu_details.memory_size %}
+        <p>Memory Size: {{ gpu_details.memory_size }}GB</p>
+    {% endif %}
+    <p>GPU Clock: {{ gpu_details.gpu_clock }}MHz</p>
+    {% if gpu_details.memory_clock %}
+        <p>Memory Clock: {{ gpu_details.memory_clock }}MHz</p>
+    {% endif %}
+    <p>Memory Type: {{ gpu_details.memory_type }}</p>
+    <p>Release Year: {{ gpu_details.release_year }}</p>
+
+    <a href="{% url 'delete_gpu' pk=object.pk %}">Delete</a>
+
+
+{% endblock %}

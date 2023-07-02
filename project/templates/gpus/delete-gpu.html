@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} GPU Delete {% endblock %}
+
+{% block content %}
+
+    <h3>Are you sure you want to delete this GPU ?</h3>
+    <form method="post">
+
+        {% csrf_token %}
+        {{ form }}
+
+        <a href="{% url 'detail_gpu' pk=object.pk %}">Back</a>
+        <input type="submit" value="Delete">
+
+    </form>
+
+{% endblock %}
