@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from django.db import models
@@ -22,10 +24,6 @@ class AllCpus(models.Model):
     cores = models.PositiveIntegerField(
         blank=True,
         null=True,
-        validators=[
-            MinValueValidator(1),
-            MaxValueValidator(128),
-        ],
     )
     threads = models.IntegerField(
         blank=True,
@@ -39,8 +37,7 @@ class AllCpus(models.Model):
         blank=True,
         null=True
     )
-    tdp = models.CharField(
-        max_length=15,
+    tdp = models.PositiveIntegerField(
         blank=True,
         null=True
     )
@@ -62,7 +59,7 @@ class CustomCpu(models.Model):
     )
     clock_speed = models.DecimalField(
         validators=[
-            MinValueValidator(0.1, 'Clock speed should be bigger than 0!'),
+            MinValueValidator(0.001, 'Clock speed should be bigger than 0!'),
         ],
         max_digits=4,
         decimal_places=2
@@ -93,8 +90,12 @@ class CustomCpu(models.Model):
             ('512GB', '512GB'),
             ('1TB', '1TB'),
         ),
-        verbose_name='Max RAM',
     )
+
+    def save(self, *args, **kwargs):
+        if not self.manufacturer[0].isdigit():
+            self.manufacturer = self.manufacturer.capitalize()
+        super().save(*args, **kwargs)
 
 
 class ChosenCpus(models.Model):
@@ -112,4 +113,3 @@ class ChosenCpus(models.Model):
         on_delete=models.CASCADE,
         null=True,
     )
-    a = models.EmailField

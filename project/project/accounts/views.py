@@ -12,6 +12,7 @@ from django.views.generic import CreateView, TemplateView, DeleteView, UpdateVie
 
 from project.accounts.forms import RegistrationForm, LoginForm, UsernameChangeForm, AccountPasswordChangeForm
 from project.cpus.models import ChosenCpus
+from project.gpus.models import ChosenGpus
 
 
 # Create your views here.
@@ -63,6 +64,7 @@ class ProfileView(DetailView):
 
         profile_user = User.objects.get(username=self.kwargs['username'])
         context['cpus'] = ChosenCpus.objects.filter(user=profile_user)
+        context['gpus'] = ChosenGpus.objects.filter(user=profile_user)
 
         return context
 

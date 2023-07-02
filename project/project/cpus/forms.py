@@ -14,16 +14,15 @@ class ChooseCpuForm(BaseCpuForm):
 
 
 class ChooseCpuListForm(BaseCpuForm):
-    class Meta:
-        model = AllCpus
+    class Meta(BaseCpuForm.Meta):
         fields = (
             'brand',
             'name',
             'cores',
             'threads',
-            'base_frequency',
-            'max_turbo_frequency',
-            'tdp'
+            # 'base_frequency',
+            # 'max_turbo_frequency',
+            # 'tdp'
         )
 
     def __init__(self, *args, **kwargs):
@@ -36,6 +35,16 @@ class CustomCpuForm(forms.ModelForm):
     class Meta:
         model = CustomCpu
         fields = "__all__"
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'CPU Name'}),
+            'manufacturer': forms.TextInput(attrs={'placeholder': 'Manufacturer'}),
+            'clock_speed': forms.NumberInput(attrs={'placeholder': 'Clock speed'}),
+            'number_of_cores': forms.NumberInput(attrs={'placeholder': 'Number of cores'}),
+            'cache_size': forms.NumberInput(attrs={'placeholder': 'Cache (MB)'}),
+        }
+        labels = {
+            'max_ram': 'Max RAM',
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

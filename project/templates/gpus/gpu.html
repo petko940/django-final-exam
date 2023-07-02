@@ -5,4 +5,20 @@
 
 {% block content %}
 
+    <section class="gpu">
+        <div class="gpu-text">
+            <h4>You can choose a GPU from this page. </h4>
+            <h4>We have a wide selection of GPUs available to meet your needs.</h4>
+        </div>
+
+        <a href="{% url 'choose_gpu' %}">Choose GPU</a>
+
+        <h3>Explore our range of high-performance graphics cards and find the perfect GPU for your gaming or computing
+            setup.
+            Whether you need powerful gaming performance, advanced rendering capabilities, or enhanced video editing
+            capabilities, we have a GPU that fits your requirements.</h3>
+
+        <img src="{% static 'images/gpu/gpus.jpg' %}" alt="GPU Image">
+    </section>
+
 {% endblock %}

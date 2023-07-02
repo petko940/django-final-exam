@@ -33,10 +33,11 @@ class ChooseCpuListView(LoginRequiredMixin, ListView):
             'brand__icontains': self.request.GET.get('brand'),
             'name__icontains': self.request.GET.get('name'),
             'cores': self.request.GET.get('cores'),
-            'threads__icontains': self.request.GET.get('threads'),
+            'threads': self.request.GET.get('threads'),
             'max_turbo_frequency__icontains': self.request.GET.get('max_turbo_frequency'),
             'base_frequency__startswith': self.request.GET.get('base_frequency'),
-            'tdp': self.request.GET.get('tdp')
+            'tdp': self.request.GET.get('tdp'),
+            'cache': self.request.GET.get('cache'),
         }
 
         for param, value in filter_params.items():
@@ -58,13 +59,13 @@ class ChooseCpuListView(LoginRequiredMixin, ListView):
         elif sort_by == 'threads':
             queryset = queryset.order_by(
                 F('threads').asc(nulls_last=True) if sort_order == 'asc' else F('threads').desc(nulls_last=True))
-        elif sort_by == 'base_frequency':
-            queryset = queryset.order_by(
-                F('base_frequency').asc(nulls_last=True) if sort_order == 'asc' else F('base_frequency').desc(
-                    nulls_last=True))
         elif sort_by == 'max_turbo_frequency':
             queryset = queryset.order_by(
                 F('max_turbo_frequency').asc(nulls_last=True) if sort_order == 'asc' else F('max_turbo_frequency').desc(
+                    nulls_last=True))
+        elif sort_by == 'base_frequency':
+            queryset = queryset.order_by(
+                F('base_frequency').asc(nulls_last=True) if sort_order == 'asc' else F('base_frequency').desc(
                     nulls_last=True))
         elif sort_by == 'tdp':
             queryset = queryset.order_by(
@@ -136,6 +137,7 @@ class CpuInformationView(DetailView):
 
 class DeleteCpuView(DeleteView):
     model = ChosenCpus
+    template_name = 'cpus/delete-cpu.html'
 
     def get_success_url(self):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})

@@ -1,0 +1,5 @@
+body.home {
+    background-image: url("/static/images/bg2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

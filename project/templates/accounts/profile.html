@@ -29,4 +29,16 @@
         </p>
     {% endfor %}
 
+    <p>GPUs</p>
+    {% for gpu in gpus %}
+        <p>
+        {% if gpu.chosen_gpu %}
+            {{ gpu.chosen_gpu.name }}
+        {% endif %}
+
+        {% if request.user.username == user.username %}
+            <a href="{% url 'detail_gpu' gpu.pk %}">Details</a>
+        {% endif %}
+    {% endfor %}
+
 {% endblock %}

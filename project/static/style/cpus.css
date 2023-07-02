@@ -2,6 +2,13 @@
     margin: 10px;
 }
 
+.cpus h4 {
+    font-size: 30px;
+    font-family: Calibri, sans-serif;
+    margin-top: -15px;
+    color: #052049;
+}
+
 .cpus .cpus-logo {
     display: flex;
     justify-content: space-between;
@@ -24,9 +31,8 @@
 
 .cpus .cpus-content {
     text-align: center;
-    margin-top: -300px;
+    margin-top: -320px;
     font-size: 30px;
-
 }
 
 .cpus .cpus-content a {
@@ -65,12 +71,12 @@
 }
 
 .cpus .cpus-form {
-    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
+    margin: -7px 0 0;
 }
 
 .cpus form input[type="text"],
@@ -137,4 +143,13 @@
     font-size: 18px;
     text-align: center;
     margin-top: 12px;
+}
+
+.cpus-table th a {
+    text-decoration: none;
+    color: #002293;
+}
+
+.cpus .cpus-image {
+    text-align: center;
 }

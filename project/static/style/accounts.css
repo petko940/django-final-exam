@@ -1,3 +1,9 @@
+body.accounts {
+    background-image: url("../images/bg1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .auth {
     width: 400px;
     height: auto;
