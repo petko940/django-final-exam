@@ -11,7 +11,11 @@
             <h4>We have a wide selection of GPUs available to meet your needs.</h4>
         </div>
 
-        <a href="{% url 'choose_gpu' %}">Choose GPU</a>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'choose_gpu' %}">Choose GPU</a>
+        {% else %}
+            <p>Login to add GPU!</p>
+        {% endif %}
 
         <h3>Explore our range of high-performance graphics cards and find the perfect GPU for your gaming or computing
             setup.

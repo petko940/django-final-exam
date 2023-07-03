@@ -213,6 +213,7 @@ body.accounts {
     margin-top: 20px;
 }
 
-.access_denied h1,p {
+.access_denied h1 {
     font-family: Verdana, sans-serif;
+    text-align: center;
 }

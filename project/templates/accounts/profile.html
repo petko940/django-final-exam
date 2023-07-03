@@ -14,31 +14,34 @@
         </div>
     {% endif %}
 
-    <p>CPUs</p>
-    {% for cpu in cpus %}
-        <p>
-            {% if cpu.chosen_cpu %}
-                {{ cpu.chosen_cpu.name }}
-            {% else %}
-                {{ cpu.build_custom_cpu.name }}
+    <div class="profile-details">
+        <p>CPUs</p>
+        {% for cpu in cpus %}
+            <p class="data">
+                {% if cpu.chosen_cpu %}
+                    {{ cpu.chosen_cpu.name }}
+                {% else %}
+                    {{ cpu.build_custom_cpu.name }}
+                {% endif %}
+
+                {% if request.user.username == user.username %}
+                    <a href="{% url 'detail_cpu' cpu.pk %}">Details</a>
+                {% endif %}
+            </p>
+        {% endfor %}
+
+        <p>GPUs</p>
+        {% for gpu in gpus %}
+            <p class="data">
+            {% if gpu.chosen_gpu %}
+                {{ gpu.chosen_gpu.name }}
             {% endif %}
 
             {% if request.user.username == user.username %}
-                <a href="{% url 'detail_cpu' cpu.pk %}">Details</a>
+                <a href="{% url 'detail_gpu' gpu.pk %}">Details</a>
             {% endif %}
-        </p>
-    {% endfor %}
+        {% endfor %}
 
-    <p>GPUs</p>
-    {% for gpu in gpus %}
-        <p>
-        {% if gpu.chosen_gpu %}
-            {{ gpu.chosen_gpu.name }}
-        {% endif %}
-
-        {% if request.user.username == user.username %}
-            <a href="{% url 'detail_gpu' gpu.pk %}">Details</a>
-        {% endif %}
-    {% endfor %}
+    </div>
 
 {% endblock %}
