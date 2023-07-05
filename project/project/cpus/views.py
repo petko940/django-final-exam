@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, TemplateView, CreateView, DeleteView, DetailView
+from django.views.generic import ListView, TemplateView, CreateView, DeleteView, DetailView, UpdateView
 
 from project.cpus.forms import ChooseCpuListForm, DeleteCpuForm, CustomCpuForm
 from project.cpus.models import AllCpus, ChosenCpus, CustomCpu
@@ -142,6 +142,14 @@ class CpuInformationView(DetailView):
 class DeleteCpuView(DeleteView):
     model = ChosenCpus
     template_name = 'cpus/delete-cpu.html'
+    form_class = CustomCpuForm
 
     def get_success_url(self):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})
+
+
+class EditCustomCpusView(UpdateView):
+    model = CustomCpu
+    template_name = 'cpus/edit-custom-cpu.html'
+    form_class = CustomCpuForm
+    success_url = reverse_lazy('home')

@@ -4,11 +4,11 @@
 
 {% block content %}
 
-    <h3>Are you sure you want to delete this GPU ?</h3>
+    <h3>Are you sure you want to delete this CPU ?</h3>
     <form method="post">
 
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
 
         <a href="{% url 'detail_cpu' pk=object.pk %}">Back</a>
         <input type="submit" value="Delete">

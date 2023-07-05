@@ -19,14 +19,15 @@
         {% for cpu in cpus %}
             <p class="data">
                 {% if cpu.chosen_cpu %}
-                    {{ cpu.chosen_cpu.name }}
+                    {{ cpu.chosen_cpu.brand }} {{ cpu.chosen_cpu.name }}
                 {% else %}
-                    {{ cpu.build_custom_cpu.name }}
+                    {{ cpu.build_custom_cpu.manufacturer }} {{ cpu.build_custom_cpu.name }}
                 {% endif %}
 
                 {% if request.user.username == user.username %}
                     <a href="{% url 'detail_cpu' cpu.pk %}">Details</a>
                 {% endif %}
+
             </p>
         {% endfor %}
 

@@ -53,6 +53,6 @@ class CustomCpuForm(forms.ModelForm):
 
 
 class DeleteCpuForm(BaseCpuForm):
-    class Meta:
+    class Meta(CustomCpuForm.Meta):
         model = ChosenCpus
         fields = '__all__'
