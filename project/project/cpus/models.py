@@ -1,8 +1,7 @@
-import datetime
-
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from django.db import models
+from .validators import cpu_name_validator, cpu_clock_speed_validator, cpu_number_cores_validator, \
+    cpu_cache_size_validator
 
 
 # Create your models here.
@@ -51,7 +50,7 @@ class CustomCpu(models.Model):
     name = models.CharField(
         max_length=30,
         validators=[
-            MinLengthValidator(5, 'CPU name should be at least 5 characters long!'),
+            cpu_name_validator,
         ],
     )
     manufacturer = models.CharField(
@@ -59,21 +58,19 @@ class CustomCpu(models.Model):
     )
     clock_speed = models.DecimalField(
         validators=[
-            MinValueValidator(0.001, 'Clock speed should be bigger than 0!'),
+            cpu_clock_speed_validator,
         ],
         max_digits=4,
         decimal_places=2
     )
     number_of_cores = models.PositiveIntegerField(
         validators=[
-            MinValueValidator(1, 'Choose cores between 1 and 512!'),
-            MaxValueValidator(512, 'Choose cores between 1 and 512!'),
+            cpu_number_cores_validator,
         ],
     )
     cache_size = models.PositiveIntegerField(
         validators=[
-            MinValueValidator(1, 'Choose cache size between 1 and 1024(MB)!'),
-            MaxValueValidator(1024, 'Choose cache size between 1 and 1024(MB)!')
+            cpu_cache_size_validator,
         ],
     )
     max_ram = models.CharField(

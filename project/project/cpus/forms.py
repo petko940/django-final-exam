@@ -38,7 +38,7 @@ class CustomCpuForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'CPU Name'}),
             'manufacturer': forms.TextInput(attrs={'placeholder': 'Manufacturer'}),
-            'clock_speed': forms.NumberInput(attrs={'placeholder': 'Clock speed'}),
+            'clock_speed': forms.NumberInput(attrs={'placeholder': 'Clock speed (GHz)'}),
             'number_of_cores': forms.NumberInput(attrs={'placeholder': 'Number of cores'}),
             'cache_size': forms.NumberInput(attrs={'placeholder': 'Cache (MB)'}),
         }

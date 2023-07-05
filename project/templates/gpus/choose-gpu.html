@@ -7,8 +7,12 @@
     <section class="gpus">
         <div class="gpus-form">
             <form>
+
                 {{ form.as_p }}
+
+                <a href="{% url 'home_gpu' %}">Back</a>
                 <input type="submit" value="Search">
+
             </form>
         </div>
         {% if gpus %}

@@ -42,6 +42,20 @@
             {% endif %}
         {% endfor %}
 
+        <p>RAM</p>
+        {% for ram in rams %}
+            <p class="data">
+            {% if ram %}
+                {{ ram.brand }} {{ ram.capacity }}GB {{ ram.memory_type }}
+            {% endif %}
+
+            {% if request.user.username == user.username %}
+{#                <a href="{% url 'detail_gpu' gpu.pk %}">Details</a>#}
+            {% endif %}
+        {% endfor %}
+
+
+
     </div>
 
 {% endblock %}
