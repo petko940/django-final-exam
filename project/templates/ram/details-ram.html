@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Detail RAM {% endblock %}
+
+{% block content %}
+
+    <h1>RAM Information</h1>
+
+    <p>Brand: {{ ram.brand }}</p>
+    <p>Name: {{ ram.memory_type }}</p>
+    <p>Speed: {{ ram.speed }}MHz</p>
+    <p>Capacity: {{ ram.capacity }}GB</p>
+
+    <a href="{% url 'profile' user.username %}">Back</a>
+    <a href="{% url 'edit_ram' pk=object.pk %}">Edit</a>
+    <a href="{% url 'delete_ram' pk=object.pk %}">Delete</a>
+
+{% endblock %}
+

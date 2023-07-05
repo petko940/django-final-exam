@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Choose RAM {% endblock %}
+
+{% block content %}
+
+    <form method="post">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+
+    <button type="submit">Done</button>
+
+    </form>
+
+    <script src="{% static 'js/update_ram_speed.js' %}"></script>
+
+{% endblock %}

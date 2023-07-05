@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Edit RAM {% endblock %}
+
+{% block content %}
+
+    <h1>Edit RAM</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <a href="{% url 'detail_ram' pk=object.pk %}">Back</a>
+        <input type="submit" value="Edit">
+    </form>
+
+    <script src="{% static 'js/update_ram_speed.js' %}"></script>
+
+{% endblock %}
+
