@@ -21,17 +21,27 @@
     height: auto;
 }
 
-.cpus .text {
+.cpus .text-left {
     color: #004636;
     text-align: center;
-    font-size: 17px;
+    font-size: 30px;
     padding: 20px;
     font-family: "Microsoft Himalaya", sans-serif;
+    margin-right: 40px;
+}
+
+.cpus .text-right {
+    color: #004636;
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+    font-family: "Microsoft Himalaya", sans-serif;
+    margin-left: 40px;
 }
 
 .cpus .cpus-content {
     text-align: center;
-    margin-top: -320px;
+    margin-top: -410px;
     font-size: 30px;
 }
 
@@ -152,4 +162,9 @@
 
 .cpus .cpus-image {
     text-align: center;
+}
+
+.cpus .cpus-image img {
+    width: auto;
+    height: 500px;
 }

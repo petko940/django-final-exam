@@ -19,8 +19,8 @@ class ChooseCpuListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = ChooseCpuListForm(data=self.request.GET or None)
-        context['sort_order'] = self.request.GET.get('sort_order', 'asc')
+        context['form'] = ChooseCpuListForm(data=self.request.GET)
+        context['sort_order'] = self.request.GET.get('sort_order')
         return context
 
     def get_queryset(self):
@@ -47,32 +47,36 @@ class ChooseCpuListView(LoginRequiredMixin, ListView):
         if not any(filter_params.values()):
             queryset = AllCpus.objects.none()
 
-        if sort_by == 'name':
+        if sort_by is not None:
             queryset = queryset.order_by(
-                F('name').asc(nulls_last=True) if sort_order == 'asc' else F('name').desc(nulls_last=True))
-        elif sort_by == 'brand':
-            queryset = queryset.order_by(
-                F('brand').asc(nulls_last=True) if sort_order == 'asc' else F('brand').desc(nulls_last=True))
-        elif sort_by == 'cores':
-            queryset = queryset.order_by(
-                F('cores').asc(nulls_last=True) if sort_order == 'asc' else F('cores').desc(nulls_last=True))
-        elif sort_by == 'threads':
-            queryset = queryset.order_by(
-                F('threads').asc(nulls_last=True) if sort_order == 'asc' else F('threads').desc(nulls_last=True))
-        elif sort_by == 'max_turbo_frequency':
-            queryset = queryset.order_by(
-                F('max_turbo_frequency').asc(nulls_last=True) if sort_order == 'asc' else F('max_turbo_frequency').desc(
-                    nulls_last=True))
-        elif sort_by == 'base_frequency':
-            queryset = queryset.order_by(
-                F('base_frequency').asc(nulls_last=True) if sort_order == 'asc' else F('base_frequency').desc(
-                    nulls_last=True))
-        elif sort_by == 'tdp':
-            queryset = queryset.order_by(
-                F('tdp').asc(nulls_last=True) if sort_order == 'asc' else F('tdp').desc(nulls_last=True))
-        elif sort_by == 'cache':
-            queryset = queryset.order_by(
-                F('cache').asc(nulls_last=True) if sort_order == 'asc' else F('cache').desc(nulls_last=True))
+                F(sort_by).asc(nulls_last=True) if sort_order == 'asc' else F(sort_by).desc(nulls_last=True))
+
+        # if sort_by == 'name':
+        #     queryset = queryset.order_by(
+        #         F('name').asc(nulls_last=True) if sort_order == 'asc' else F('name').desc(nulls_last=True))
+        # elif sort_by == 'brand':
+        #     queryset = queryset.order_by(
+        #         F('brand').asc(nulls_last=True) if sort_order == 'asc' else F('brand').desc(nulls_last=True))
+        # elif sort_by == 'cores':
+        #     queryset = queryset.order_by(
+        #         F('cores').asc(nulls_last=True) if sort_order == 'asc' else F('cores').desc(nulls_last=True))
+        # elif sort_by == 'threads':
+        #     queryset = queryset.order_by(
+        #         F('threads').asc(nulls_last=True) if sort_order == 'asc' else F('threads').desc(nulls_last=True))
+        # elif sort_by == 'max_turbo_frequency':
+        #     queryset = queryset.order_by(
+        #         F('max_turbo_frequency').asc(nulls_last=True) if sort_order == 'asc' else F('max_turbo_frequency').desc(
+        #             nulls_last=True))
+        # elif sort_by == 'base_frequency':
+        #     queryset = queryset.order_by(
+        #         F('base_frequency').asc(nulls_last=True) if sort_order == 'asc' else F('base_frequency').desc(
+        #             nulls_last=True))
+        # elif sort_by == 'tdp':
+        #     queryset = queryset.order_by(
+        #         F('tdp').asc(nulls_last=True) if sort_order == 'asc' else F('tdp').desc(nulls_last=True))
+        # elif sort_by == 'cache':
+        #     queryset = queryset.order_by(
+        #         F('cache').asc(nulls_last=True) if sort_order == 'asc' else F('cache').desc(nulls_last=True))
 
         return queryset
 

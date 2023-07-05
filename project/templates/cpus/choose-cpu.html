@@ -8,6 +8,7 @@
         <div class="cpus-form">
             <form>
                 {{ form.as_p }}
+                <a href="{% url 'home_cpu' %}">Back</a>
                 <input type="submit" value="Search">
             </form>
         </div>
@@ -19,51 +20,42 @@
                     <tr>
                         <th>
                             <a href="?brand={{ request.GET.brand|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;cores={{ request.GET.cores|default:'' }}&amp;threads={{ request.GET.threads|default:'' }}&amp;base_frequency={{ request.GET.base_frequency|default:'' }}&amp;max_turbo_frequency={{ request.GET.max_turbo_frequency|default:'' }}&amp;tdp={{ request.GET.tdp|default:'' }}&amp;sort_by=name&amp;sort_order=
-
-
                                     {{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Name</a>
                         </th>
                         <th>
                             <a href="?brand={{ request.GET.brand|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;cores={{ request.GET.cores|default:'' }}&amp;threads={{ request.GET.threads|default:'' }}&amp;base_frequency={{ request.GET.base_frequency|default:'' }}&amp;max_turbo_frequency={{ request.GET.max_turbo_frequency|default:'' }}&amp;tdp={{ request.GET.tdp|default:'' }}&amp;sort_by=brand&amp;sort_order=
-
                                     {{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Brand</a>
                         </th>
 
                         <th>
                             <a href="?brand={{ request.GET.brand|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;cores={{ request.GET.cores|default:'' }}&amp;threads={{ request.GET.threads|default:'' }}&amp;base_frequency={{ request.GET.base_frequency|default:'' }}&amp;max_turbo_frequency={{ request.GET.max_turbo_frequency|default:'' }}&amp;tdp={{ request.GET.tdp|default:'' }}&amp;sort_by=cores&amp;sort_order=
-
                                     {{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Cores</a>
                         </th>
 
                         <th>
                             <a href="?brand={{ request.GET.brand|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;cores={{ request.GET.cores|default:'' }}&amp;threads={{ request.GET.threads|default:'' }}&amp;base_frequency={{ request.GET.base_frequency|default:'' }}&amp;max_turbo_frequency={{ request.GET.max_turbo_frequency|default:'' }}&amp;tdp={{ request.GET.tdp|default:'' }}&amp;sort_by=threads&amp;sort_order=
-
                                     {{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Threads</a>
                         </th>
 
                         <th>
                             <a href="?brand={{ request.GET.brand|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;cores={{ request.GET.cores|default:'' }}&amp;threads={{ request.GET.threads|default:'' }}&amp;base_frequency={{ request.GET.base_frequency|default:'' }}&amp;max_turbo_frequency={{ request.GET.max_turbo_frequency|default:'' }}&amp;tdp={{ request.GET.tdp|default:'' }}&amp;sort_by=base_frequency&amp;sort_order=
-
                                     {{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Base
                                 Frequency</a>
                         </th>
 
                         <th>
                             <a href="?brand={{ request.GET.brand|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;cores={{ request.GET.cores|default:'' }}&amp;threads={{ request.GET.threads|default:'' }}&amp;base_frequency={{ request.GET.base_frequency|default:'' }}&amp;max_turbo_frequency={{ request.GET.max_turbo_frequency|default:'' }}&amp;tdp={{ request.GET.tdp|default:'' }}&amp;sort_by=max_turbo_frequency&amp;sort_order=
-
                                     {{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Max
                                 Turbo Frequency</a>
                         </th>
 
                         <th>
                             <a href="?brand={{ request.GET.brand|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;cores={{ request.GET.cores|default:'' }}&amp;threads={{ request.GET.threads|default:'' }}&amp;base_frequency={{ request.GET.base_frequency|default:'' }}&amp;max_turbo_frequency={{ request.GET.max_turbo_frequency|default:'' }}&amp;tdp={{ request.GET.tdp|default:'' }}&amp;sort_by=tdp&amp;sort_order=
-
                                     {{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">TDP</a>
                         </th>
 
                         <th>
                             <a href="?brand={{ request.GET.brand|default:'' }}&amp;name={{ request.GET.name|default:'' }}&amp;cores={{ request.GET.cores|default:'' }}&amp;threads={{ request.GET.threads|default:'' }}&amp;base_frequency={{ request.GET.base_frequency|default:'' }}&amp;max_turbo_frequency={{ request.GET.max_turbo_frequency|default:'' }}&amp;tdp={{ request.GET.tdp|default:'' }}&amp;sort_by=cache&amp;sort_order=
-
                                     {{ sort_order|default:'asc' }}{% if sort_order|default:'asc' == 'asc' %}&amp;sort_order=desc{% else %}&amp;sort_order=asc{% endif %}">Cache</a>
                         </th>
 

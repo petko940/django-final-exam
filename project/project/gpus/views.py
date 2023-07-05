@@ -21,7 +21,7 @@ class ChooseGpuListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = ChooseGpuForm(data=self.request.GET)
-        context['sort_order'] = self.request.GET.get('sort_order', 'asc')
+        context['sort_order'] = self.request.GET.get('sort_order')
         return context
 
     def get_queryset(self):
@@ -47,34 +47,36 @@ class ChooseGpuListView(LoginRequiredMixin, ListView):
         if not any(filter_params.values()):
             queryset = AllGpus.objects.none()
 
-        if sort_by == 'name':
+        if sort_by is not None:
             queryset = queryset.order_by(
-                F('name').asc(nulls_last=True) if sort_order == 'asc' else F('name').desc(nulls_last=True))
-        elif sort_by == 'manufacturer':
-            queryset = queryset.order_by(
-                F('manufacturer').asc(nulls_last=True) if sort_order == 'asc' else F('manufacturer').desc(
-                    nulls_last=True))
-        elif sort_by == 'release_year':
-            queryset = queryset.order_by(
-                F('release_year').asc(nulls_last=True) if sort_order == 'asc' else F('release_year').desc(
-                    nulls_last=True))
-        elif sort_by == 'memory_size':
-            queryset = queryset.order_by(
-                F('memory_size').asc(nulls_last=True) if sort_order == 'asc' else F('memory_size').desc(
-                    nulls_last=True))
-        elif sort_by == 'gpu_clock':
-            queryset = queryset.order_by(
-                F('gpu_clock').asc(nulls_last=True) if sort_order == 'asc' else F('gpu_clock').desc(nulls_last=True))
-        elif sort_by == 'memory_clock':
-            queryset = queryset.order_by(
-                F('memory_clock').asc(nulls_last=True) if sort_order == 'asc' else F('memory_clock').desc(
-                    nulls_last=True))
-        elif sort_by == 'memory_type':
-            queryset = queryset.order_by(
-                F('memory_type').asc(nulls_last=True) if sort_order == 'asc' else F('memory_type').desc(
-                    nulls_last=True))
+                F(sort_by).asc(nulls_last=True) if sort_order == 'asc' else F(sort_by).desc(nulls_last=True))
 
         return queryset
+        # if sort_by == 'name':
+        #     queryset = queryset.order_by(F('name').asc(nulls_last=True) if sort_order == 'asc' else F('name').desc(nulls_last=True))
+        # elif sort_by == 'manufacturer':
+        #     queryset = queryset.order_by(
+        #         F('manufacturer').asc(nulls_last=True) if sort_order == 'asc' else F('manufacturer').desc(
+        #             nulls_last=True))
+        # elif sort_by == 'release_year':
+        #     queryset = queryset.order_by(
+        #         F('release_year').asc(nulls_last=True) if sort_order == 'asc' else F('release_year').desc(
+        #             nulls_last=True))
+        # elif sort_by == 'memory_size':
+        #     queryset = queryset.order_by(
+        #         F('memory_size').asc(nulls_last=True) if sort_order == 'asc' else F('memory_size').desc(
+        #             nulls_last=True))
+        # elif sort_by == 'gpu_clock':
+        #     queryset = queryset.order_by(
+        #         F('gpu_clock').asc(nulls_last=True) if sort_order == 'asc' else F('gpu_clock').desc(nulls_last=True))
+        # elif sort_by == 'memory_clock':
+        #     queryset = queryset.order_by(
+        #         F('memory_clock').asc(nulls_last=True) if sort_order == 'asc' else F('memory_clock').desc(
+        #             nulls_last=True))
+        # elif sort_by == 'memory_type':
+        #     queryset = queryset.order_by(
+        #         F('memory_type').asc(nulls_last=True) if sort_order == 'asc' else F('memory_type').desc(
+        #             nulls_last=True))
 
     def post(self, request, *args, **kwargs):
         gpu_id = self.request.POST.get('gpu_id')
@@ -107,5 +109,6 @@ class GpuDetailsView(DetailView):
 class DeleteGpuView(DeleteView):
     model = ChosenGpus
     template_name = 'gpus/delete-gpu.html'
+
     def get_success_url(self):
-        return reverse_lazy('profile',kwargs={'username': self.request.user.username})
+        return reverse_lazy('profile', kwargs={'username': self.request.user.username})

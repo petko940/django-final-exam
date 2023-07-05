@@ -3,17 +3,3 @@
 @import url('header.css');
 @import url('cpus.css');
 @import url('gpus.css');
-
-
-/*body.home {*/
-/*    background-image: url("/static/images/bg2.png");*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: cover;*/
-/*}*/
-
-/*body.accounts {*/
-/*    !*background-image: url("/static/images/bg1.png");*!*/
-/*    background-image: url("../images/bg1.png");*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: cover;*/
-/*}*/
