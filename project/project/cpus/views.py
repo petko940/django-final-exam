@@ -91,14 +91,14 @@ class ChooseCpuListView(LoginRequiredMixin, ListView):
             build_custom_cpu=None)
 
         chosen_cpu.save()
-        return redirect('home')
+        return redirect('home_cpu')
 
 
 class BuildCustomCpuView(LoginRequiredMixin, CreateView):
     model = CustomCpu
     template_name = 'cpus/custom-cpu.html'
     form_class = CustomCpuForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('home_cpu')
 
     def form_valid(self, form):
         cpu = form.save(commit=False)
@@ -142,7 +142,6 @@ class CpuInformationView(DetailView):
 class DeleteCpuView(DeleteView):
     model = ChosenCpus
     template_name = 'cpus/delete-cpu.html'
-    form_class = CustomCpuForm
 
     def get_success_url(self):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})
@@ -152,4 +151,6 @@ class EditCustomCpusView(UpdateView):
     model = CustomCpu
     template_name = 'cpus/edit-custom-cpu.html'
     form_class = CustomCpuForm
-    success_url = reverse_lazy('home')
+
+    def get_success_url(self):
+        return reverse_lazy('profile', kwargs={'username': self.request.user.username})

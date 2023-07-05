@@ -88,7 +88,7 @@ class ChooseGpuListView(LoginRequiredMixin, ListView):
             chosen_gpu=gpu)
 
         chosen_gpu.save()
-        return redirect('home')
+        return redirect('home_gpu')
 
 
 class GpuDetailsView(DetailView):

@@ -16,46 +16,55 @@
 
     <div class="profile-details">
         <p>CPUs</p>
-        {% for cpu in cpus %}
-            <p class="data">
-                {% if cpu.chosen_cpu %}
-                    {{ cpu.chosen_cpu.brand }} {{ cpu.chosen_cpu.name }}
-                {% else %}
-                    {{ cpu.build_custom_cpu.manufacturer }} {{ cpu.build_custom_cpu.name }}
+        {% if cpus %}
+            {% for cpu in cpus %}
+                <p class="data">
+                    {% if cpu.chosen_cpu %}
+                        {{ cpu.chosen_cpu.brand }} {{ cpu.chosen_cpu.name }}
+                    {% else %}
+                        {{ cpu.build_custom_cpu.manufacturer }} {{ cpu.build_custom_cpu.name }}
+                    {% endif %}
+
+                    {% if request.user.username == user.username %}
+                        <a href="{% url 'detail_cpu' cpu.pk %}">Details</a>
+                    {% endif %}
+                </p>
+            {% endfor %}
+        {% else %}
+            <p>None</p>
+        {% endif %}
+
+        <p>GPUs</p>
+        {% if gpus %}
+            {% for gpu in gpus %}
+                <p class="data">
+                {% if gpu.chosen_gpu %}
+                    {{ gpu.chosen_gpu.name }}
                 {% endif %}
 
                 {% if request.user.username == user.username %}
-                    <a href="{% url 'detail_cpu' cpu.pk %}">Details</a>
+                    <a href="{% url 'detail_gpu' gpu.pk %}">Details</a>
                 {% endif %}
-
-            </p>
-        {% endfor %}
-
-        <p>GPUs</p>
-        {% for gpu in gpus %}
-            <p class="data">
-            {% if gpu.chosen_gpu %}
-                {{ gpu.chosen_gpu.name }}
-            {% endif %}
-
-            {% if request.user.username == user.username %}
-                <a href="{% url 'detail_gpu' gpu.pk %}">Details</a>
-            {% endif %}
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+            <p>None</p>
+        {% endif %}
 
         <p>RAM</p>
-        {% for ram in rams %}
-            <p class="data">
-            {% if ram %}
-                {{ ram.brand }} {{ ram.capacity }}GB {{ ram.memory_type }}
-            {% endif %}
+        {% if rams %}
+            {% for ram in rams %}
+                <p class="data">
+                {% if ram %}
+                    {{ ram.brand }} {{ ram.capacity }}GB {{ ram.memory_type }}
+                {% endif %}
 
-            {% if request.user.username == user.username %}
-{#                <a href="{% url 'detail_gpu' gpu.pk %}">Details</a>#}
-            {% endif %}
-        {% endfor %}
-
-
+                {% if request.user.username == user.username %}
+                    <a href="{% url 'detail_ram' ram.pk %}">Details</a>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>None</p>
+        {% endif %}
 
     </div>
 

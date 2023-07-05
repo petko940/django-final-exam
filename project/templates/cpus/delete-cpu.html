@@ -4,7 +4,17 @@
 
 {% block content %}
 
-    <h3>Are you sure you want to delete this CPU ?</h3>
+    {% if chosencpus.chosen_cpu %}
+        <h3>Are you sure you want to delete
+            CPU {{ chosencpus.chosen_cpu.brand }} {{ chosencpus.chosen_cpu.name }} {{ chosencpus.chosen_cpu.cores }}Cores {{ chosencpus.chosen_cpu.base_frequency }}GHzz
+            ?</h3>
+    {% else %}
+        <h3>Are you sure you want to delete
+            CPU {{ chosencpus.build_custom_cpu.manufacturer }} {{ chosencpus.build_custom_cpu.name }}
+            {{ chosencpus.build_custom_cpu.number_of_cores }}Cores {{ chosencpus.build_custom_cpu.clock_speed }}GHz
+            ?</h3>
+    {% endif %}
+
     <form method="post">
 
         {% csrf_token %}
