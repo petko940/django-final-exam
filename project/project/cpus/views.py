@@ -117,7 +117,7 @@ class BuildCustomCpuView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class CpuInformationView(DetailView):
+class CpuInformationView(LoginRequiredMixin, DetailView):
     template_name = 'cpus/details-cpu.html'
     model = ChosenCpus
 
