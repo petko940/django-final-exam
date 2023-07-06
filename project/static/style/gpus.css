@@ -75,39 +75,6 @@
     margin: 5px 0 0;
 }
 
-.gpus form input[type="text"],
-.gpus form input[type="number"],
-.gpus form select {
-    display: block;
-    width: 300px;
-    padding: 5px 10px;
-    margin-bottom: -9px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.gpus form input[type="submit"],
-.gpus form button[type="submit"],
-.gpus form button[type="reset"] {
-    display: inline-block;
-    margin-top: 2px;
-    padding: 10px 20px;
-    color: #fff;
-    background-color: rgb(22, 107, 222);
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.gpus form input[type="submit"]:hover,
-.gpus form button[type="submit"]:hover,
-.gpus form button[type="reset"]:hover {
-    background-color: #549aff;
-}
-
 .gpus-table {
     margin-top: 20px;
     text-align: center;

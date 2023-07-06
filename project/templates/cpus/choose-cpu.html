@@ -5,11 +5,13 @@
 {% block content %}
 
     <section class="cpus">
-        <div class="cpus-form">
+        <div class="cpus-form-search">
             <form>
                 {{ form.as_p }}
-                <a href="{% url 'home_cpu' %}">Back</a>
                 <input type="submit" value="Search">
+                <div class="cpu-button-back">
+                    <a href="{% url 'home_cpu' %}">Back</a>
+                </div>
             </form>
         </div>
         {% if cpus %}

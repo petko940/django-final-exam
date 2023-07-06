@@ -4,19 +4,18 @@
 
 {% block content %}
 
-    <section class="gpus">
-    <div class="form-box">
-        <div class="gpus-form">
+    <section class="cpus">
+        <div class="cpus-form-search">
             <form>
 
                 {{ form.as_p }}
-
-                <a href="{% url 'home_gpu' %}">Back</a>
                 <input type="submit" value="Search">
-
+                <div class="cpu-button-back">
+                    <a href="{% url 'home_gpu' %}">Back</a>
+                </div>
             </form>
         </div>
-    </div>
+
         {% if gpus %}
         <div class="gpus-table">
             <table>
