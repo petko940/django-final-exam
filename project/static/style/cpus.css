@@ -263,7 +263,8 @@
 
 .cpus-build form input[type="submit"],
 .cpus-build form button[type="submit"],
-.cpus-build form button[type="reset"] {
+.cpus-build form button[type="reset"],
+.cpus-build .button-back {
     display: inline-block;
     margin-top: 2px;
     padding: 10px 20px;
@@ -278,6 +279,11 @@
 
 .cpus-build form input[type="submit"]:hover,
 .cpus-build form button[type="submit"]:hover,
-.cpus-build form button[type="reset"]:hover {
+.cpus-build form button[type="reset"]:hover,
+.cpus-build .button-back:hover {
     background-color: #549aff;
+}
+
+.cpus-build .cpu-button-back {
+    text-align: center;
 }

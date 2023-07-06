@@ -12,7 +12,7 @@
                 {% csrf_token %}
                 {{ form.as_p }}
 
-                <a href="{% url 'home_ram' %}">Back</a>
+                <a class="button-back" href="{% url 'home_ram' %}">Back</a>
                 <button type="submit">Done</button>
 
             </form>
