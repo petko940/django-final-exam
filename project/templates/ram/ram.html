@@ -1,13 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} RAM {% endblock %}
 
 {% block content %}
 
-    {% if request.user.is_authenticated %}
-        <a href="{% url 'choose_ram' %}">Choose RAM</a>
-    {% else %}
-        <p>Login to add RAM!</p>
-    {% endif %}
+    <div class="ram-content">
+        <div class="ram-text">
+            <h4>Discover the perfect RAM for your needs on this page.</h4>
+            <h4>You can choose from a selection of options</h4>
+            <h4>Including various brand, capacities, memory types and speeds.</h4>
+            <div class="ram-button">
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'choose_ram' %}">Choose RAM</a>
+                {% else %}
+                    <p>Login to add RAM!</p>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="ram-image">
+            <img src="{% static 'images/ram/ram.jpg' %}" alt="GPU Image">
+        </div>
+    </div>
+
 
 {% endblock %}

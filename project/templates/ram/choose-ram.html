@@ -5,14 +5,19 @@
 
 {% block content %}
 
-    <form method="post">
+    <section class="ram">
+        <div class="ram-form">
+            <form method="post">
 
-        {% csrf_token %}
-        {{ form.as_p }}
+                {% csrf_token %}
+                {{ form.as_p }}
 
-    <button type="submit">Done</button>
+                <a href="{% url 'home_ram' %}">Back</a>
+                <button type="submit">Done</button>
 
-    </form>
+            </form>
+        </div>
+    </section>
 
     <script src="{% static 'js/update_ram_speed.js' %}"></script>
 
