@@ -25,6 +25,7 @@
         <p>Max RAM: {{ custom_cpu_info.max_ram }}</p>
 
         <a href="{% url 'edit_cpu' pk=object.pk %}">Edit</a>
+
     {% endif %}
 
     <a href="{% url 'delete_cpu' pk=object.pk %}">Delete</a>

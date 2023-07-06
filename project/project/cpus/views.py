@@ -148,9 +148,14 @@ class DeleteCpuView(DeleteView):
 
 
 class EditCustomCpusView(UpdateView):
-    model = CustomCpu
+    model = ChosenCpus
     template_name = 'cpus/edit-custom-cpu.html'
     form_class = CustomCpuForm
+
+    def get_object(self, queryset=None):
+        chosen_cpu_id = self.kwargs['pk']
+        chosen_cpu = ChosenCpus.objects.get(id=chosen_cpu_id)
+        return chosen_cpu.build_custom_cpu
 
     def get_success_url(self):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})

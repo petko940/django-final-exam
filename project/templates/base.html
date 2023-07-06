@@ -33,7 +33,7 @@
             <li><a href="#">Motherboard</a></li>
 
             {% if request.user.is_authenticated %}
-                <li class="profile"><a href="{% url 'profile' username=request.user.username %}">Profile</a></li>
+                <li class="profile"><a href="{% url 'profile' username=request.user.username %}">{{ request.user.username }}</a></li>
                 <a href="{% url 'logout' %}"> <img src="{% static 'images/logout-image.png' %}" class="logout-image"
                                                    alt="Logout"></a>
             {% else %}
