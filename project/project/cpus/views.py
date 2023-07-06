@@ -139,7 +139,7 @@ class CpuInformationView(DetailView):
         return context
 
 
-class DeleteCpuView(DeleteView):
+class DeleteCpuView(LoginRequiredMixin, DeleteView):
     model = ChosenCpus
     template_name = 'cpus/delete-cpu.html'
 
@@ -147,7 +147,7 @@ class DeleteCpuView(DeleteView):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})
 
 
-class EditCustomCpusView(UpdateView):
+class EditCustomCpusView(LoginRequiredMixin, UpdateView):
     model = ChosenCpus
     template_name = 'cpus/edit-custom-cpu.html'
     form_class = CustomCpuForm

@@ -11,6 +11,12 @@ class RAMForm(forms.ModelForm):
             'memory_type': forms.Select(attrs={'onchange': 'updateSpeedChoices()'}),
         }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.label_suffix = ''
+
+
 
 class DeleteRamForm(RAMForm):
     class Meta(RAMForm.Meta):
