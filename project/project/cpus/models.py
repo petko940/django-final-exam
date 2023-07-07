@@ -24,7 +24,7 @@ class AllCpus(models.Model):
         blank=True,
         null=True,
     )
-    threads = models.IntegerField(
+    threads = models.PositiveIntegerField(
         blank=True,
         null=True
     )

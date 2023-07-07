@@ -14,6 +14,7 @@ from project.accounts.forms import RegistrationForm, LoginForm, UsernameChangeFo
 from project.cpus.models import ChosenCpus
 from project.gpus.models import ChosenGpus
 from project.ram.models import RAM
+from project.storage.models import Storage
 
 
 # Create your views here.
@@ -67,7 +68,7 @@ class ProfileView(DetailView):
         context['cpus'] = ChosenCpus.objects.filter(user=profile_user)
         context['gpus'] = ChosenGpus.objects.filter(user=profile_user)
         context['rams'] = RAM.objects.filter(user=profile_user)
-
+        context['storages'] = Storage.objects.filter(user=profile_user)
         return context
 
 

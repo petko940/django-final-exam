@@ -66,6 +66,21 @@
             <p>None</p>
         {% endif %}
 
+        <p>Storage</p>
+        {% if storages %}
+            {% for storage in storages %}
+                <p class="data">
+                {% if storage %}
+                    {{ storage.brand }} {{ storage.type }} {{ storage.capacity }}GB
+                {% endif %}
+
+                {% if request.user.username == user.username %}
+                    <a href="{% url 'detail_storage' storage.pk %}">Details</a>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>None</p>
+        {% endif %}
     </div>
 
 {% endblock %}

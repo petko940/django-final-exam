@@ -8,14 +8,15 @@ class RAMForm(forms.ModelForm):
         model = RAM
         fields = '__all__'
         widgets = {
-            'memory_type': forms.Select(attrs={'onchange': 'updateSpeedChoices()'}),
+            'memory_type': forms.Select(
+                attrs={'onchange': 'updateSpeedChoices()'}
+            ),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.label_suffix = ''
-
 
 
 class DeleteRamForm(RAMForm):

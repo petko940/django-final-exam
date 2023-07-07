@@ -6,10 +6,11 @@
 
     <section class="cpus">
         <div class="cpus-form-search">
-            <form>
+            <form id="search-form">
                 {{ form.as_p }}
                 <input type="submit" value="Search">
-                <div class="cpu-button-back">
+                <input type="button" value="Reset fields" onclick="resetForm()">
+                <div class="cpu-button">
                     <a href="{% url 'home_cpu' %}">Back</a>
                 </div>
             </form>
@@ -101,6 +102,12 @@
         <p>No cpus found</p>
     {% endif %}
     </section>
+    <script>
+        function resetForm() {
+            document.getElementById('search-form').reset();
+        }
+    </script>
+
 
 {% endblock %}
 

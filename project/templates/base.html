@@ -29,7 +29,7 @@
             <li><a href="{% url 'home_cpu' %}">CPU</a></li>
             <li><a href="{% url 'home_gpu' %}">GPU</a></li>
             <li><a href="{% url 'home_ram' %}">RAM</a></li>
-            <li><a href="#">Storage</a></li>
+            <li><a href="{% url 'home_storage' %}">Storage</a></li>
             <li><a href="#">Motherboard</a></li>
 
             {% if request.user.is_authenticated %}
