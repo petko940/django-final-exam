@@ -1,3 +1,3 @@
 # django-final-exam
 
-50% done
+65% done
