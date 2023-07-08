@@ -73,12 +73,15 @@
             </table>
         </div>
     {% else %}
-        <p>No GPUs found</p>
+        <div class="not-found">
+            No GPUs found
+        </div>
     {% endif %}
     </section>
     <script>
         function resetForm() {
             document.getElementById('search-form').reset();
+            window.location.href = "{% url 'choose_cpu' %}";
         }
     </script>
 

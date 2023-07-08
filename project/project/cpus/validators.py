@@ -18,4 +18,4 @@ def cpu_number_cores_validator(value):
 
 def cpu_cache_size_validator(value):
     if not 1 < value <= 1024:
-        raise ValidationError('Cache size should be between 1 and 1024!')
+        raise ValidationError('Cache size should be between 1 and 1024 (MB)!')

@@ -36,7 +36,7 @@
 .ram form button[type="reset"],
 .button-back {
     display: inline-block;
-    margin-top: 2px;
+    margin-top: -7px;
     padding: 10px 20px;
     color: #fff;
     background-color: rgb(22, 107, 222);
@@ -49,11 +49,17 @@
 
 .ram form input[type="submit"]:hover,
 .ram form button[type="submit"]:hover,
-.ram form button[type="reset"]:hover,
-.button-back:hover {
+.ram form button[type="reset"]:hover {
     background-color: #549aff;
 }
 
+.button-back {
+    background-color: #006b1b;
+}
+
+.button-back:hover {
+    background-color: #00982a;
+}
 .ram-content {
     display: flex;
     align-items: center;
@@ -114,4 +120,10 @@
 
 .ram-button a:hover {
     background-color: #ffffff;
+}
+
+.ram .error-message {
+    color: #860000;
+    margin-top: 12px;
+
 }

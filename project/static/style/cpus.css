@@ -240,17 +240,6 @@
     background-color: rgb(10, 187, 0);
 }
 
-.cpus-build {
-    margin: 20px auto;
-    width: 400px;
-    height: 470px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: rgba(249, 249, 249, 0.09);
-}
-
 .cpus-build .cpus-form-build {
     display: flex;
     justify-content: center;
@@ -264,6 +253,7 @@
 .cpus-build form input[type="text"],
 .cpus-build form input[type="number"],
 .cpus-build form select {
+    align-items: center;
     display: block;
     width: 300px;
     padding: 5px 10px;
@@ -298,4 +288,17 @@
 
 .cpus-build .cpu-button {
     text-align: center;
+}
+
+.cpus-build .error-message {
+    color: #9d0000;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.cpus .not-found {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
 }

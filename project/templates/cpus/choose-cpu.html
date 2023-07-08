@@ -98,13 +98,16 @@
                 </tbody>
             </table>
         </div>
-    {% else %}
-        <p>No cpus found</p>
-    {% endif %}
+        {% else %}
+            <div class="not-found">
+                No cpus found
+            </div>
+        {% endif %}
     </section>
     <script>
         function resetForm() {
             document.getElementById('search-form').reset();
+            window.location.href = "{% url 'choose_cpu' %}";
         }
     </script>
 
