@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Storage Delete {% endblock %}
+
+{% block content %}
+
+    <h3>Are you sure you want to delete {{ storage.type }} {{ storage.brand }} {{ storage.capacity }}GB</h3>
+    <form method="post">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'detail_storage' pk=object.pk %}">Back</a>
+        <input type="submit" value="Delete">
+
+    </form>
+
+{% endblock %}

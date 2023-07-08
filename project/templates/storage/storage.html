@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Storage {% endblock %}
+
+{% block content %}
+
+    <div class="storage-container">
+        <div class="left-section">
+            <img src="{% static 'images/storage/hdd.jpg' %}" alt="" class="storage-image">
+        </div>
+
+        <div class="middle-section">
+            <h4>You can choose a Storage (HDD or SSD) from this page.</h4>
+            <div class="storage-button">
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'choose_storage' %}">Choose Storage</a>
+                {% else %}
+                    <p>Login to add HDD or/and SSD!</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="right-section">
+            <img src="{% static 'images/storage/ssd.jpg' %}" alt="" class="storage-image">
+        </div>
+    </div>
+
+{% endblock %}
