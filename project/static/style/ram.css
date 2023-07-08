@@ -58,8 +58,9 @@
 }
 
 .button-back:hover {
-    background-color: #00982a;
+    background-color: #00d538;
 }
+
 .ram-content {
     display: flex;
     align-items: center;
@@ -125,5 +126,4 @@
 .ram .error-message {
     color: #860000;
     margin-top: 12px;
-
 }
