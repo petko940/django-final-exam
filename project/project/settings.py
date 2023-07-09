@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'project.gpus',
     'project.ram',
     'project.storage',
+    'project.motherboards'
 ]
 
 MIDDLEWARE = [

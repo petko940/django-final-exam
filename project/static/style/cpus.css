@@ -302,3 +302,20 @@
     font-size: 20px;
     margin-top: 10px;
 }
+
+.cpus-build .button-back-cpu {
+    display: inline-block;
+    margin-top: 2px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: rgb(20, 112, 0);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cpus-build .button-back-cpu {
+    background-color: #1fa800;
+}

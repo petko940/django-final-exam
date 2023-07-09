@@ -30,7 +30,7 @@
             <li><a href="{% url 'home_gpu' %}">GPU</a></li>
             <li><a href="{% url 'home_ram' %}">RAM</a></li>
             <li><a href="{% url 'home_storage' %}">Storage</a></li>
-            <li><a href="#">Motherboard</a></li>
+            <li><a href="{% url 'home_motherboard' %}">Motherboard</a></li>
 
             {% if request.user.is_authenticated %}
                 <li class="profile"><a href="{% url 'profile' username=request.user.username %}">{{ request.user.username }}</a></li>

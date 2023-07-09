@@ -126,4 +126,5 @@
 .ram .error-message {
     color: #860000;
     margin-top: 12px;
+    margin-bottom: -25px;
 }
