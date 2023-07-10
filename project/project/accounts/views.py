@@ -3,16 +3,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
-from django.http import HttpResponseForbidden
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.utils.text import slugify
 from django.views.generic import CreateView, TemplateView, DeleteView, UpdateView, FormView, DetailView, RedirectView
 
 from project.accounts.forms import RegistrationForm, LoginForm, UsernameChangeForm, AccountPasswordChangeForm
 from project.cpus.models import ChosenCpus
 from project.gpus.models import ChosenGpus
+from project.motherboards.models import Motherboard
 from project.ram.models import RAM
 from project.storage.models import Storage
 
@@ -69,6 +67,7 @@ class ProfileView(DetailView):
         context['gpus'] = ChosenGpus.objects.filter(user=profile_user)
         context['rams'] = RAM.objects.filter(user=profile_user)
         context['storages'] = Storage.objects.filter(user=profile_user)
+        context['motherboards'] = Motherboard.objects.filter(user=profile_user)
         return context
 
 

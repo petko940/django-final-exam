@@ -1,5 +1,6 @@
 .cpus {
     margin: 10px;
+    text-align: center;
 }
 
 .cpus h4 {
@@ -105,7 +106,7 @@
 .cpus form input[type="submit"],
 .cpus form button[type="submit"],
 .cpus form button[type="reset"],
-.cpus form input[type="button"]{
+.cpus form input[type="button"] {
     display: inline-block;
     margin-top: 2px;
     padding: 10px 20px;
@@ -183,6 +184,7 @@
 .cpus-form-search {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .cpus-form-search form {
@@ -216,7 +218,7 @@
 .cpus-form-search form input[type="submit"],
 .cpus-form-search form button[type="submit"],
 .cpus-form-search form button[type="reset"],
-.cpus form input[type="button"]{
+.cpus form input[type="button"] {
     margin-top: 25px;
 }
 
@@ -318,4 +320,12 @@
 
 .cpus-build .button-back-cpu {
     background-color: #1fa800;
+}
+
+.header-title {
+    color: #004636;
+    text-align: center;
+    font-size: 20px;
+    font-family: Georgia, sans-serif;
+    margin-right: -20px;
 }

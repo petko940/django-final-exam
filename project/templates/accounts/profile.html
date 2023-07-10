@@ -81,6 +81,25 @@
         {% else %}
             <p>None</p>
         {% endif %}
+
+        <p>Motherboards</p>
+        {% if motherboards %}
+            {% for motherboard in motherboards %}
+                <p class="data">
+                {% if motherboard %}
+                    {{ motherboard.manufacturer }} {{ motherboard.model }}
+                {% endif %}
+
+                {% if request.user.username == user.username %}
+                    <a href="{% url 'detail_motherboard' motherboard.pk %}">Details</a>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>None</p>
+        {% endif %}
+
+
+    Add pc if all fields are filled
     </div>
 
 {% endblock %}

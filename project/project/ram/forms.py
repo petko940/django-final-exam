@@ -11,6 +11,9 @@ class RAMForm(forms.ModelForm):
             'memory_type': forms.Select(
                 attrs={'onchange': 'updateSpeedChoices()'}
             ),
+            'capacity': forms.NumberInput(
+                attrs={'placeholder': 'E.g. 8GB, 16GB, 32GB'}
+            )
         }
 
     def __init__(self, *args, **kwargs):

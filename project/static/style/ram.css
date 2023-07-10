@@ -36,7 +36,7 @@
 .ram form button[type="reset"],
 .button-back {
     display: inline-block;
-    margin-top: -7px;
+    margin-top: 15px;
     padding: 10px 20px;
     color: #fff;
     background-color: rgb(22, 107, 222);
