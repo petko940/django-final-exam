@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Detail Motherboard {% endblock %}
+
+{% block content %}
+
+    <h1>Motherboard Information</h1>
+
+    <p>Manufacturer: {{ motherboard.manufacturer }} </p>
+    <p>Model: {{ motherboard.model }} </p>
+    <p>Form Factor: {{ motherboard.form_factor }} </p>
+    <p>Chipset: {{ motherboard.chipset }} </p>
+    <p>Socket: {{ motherboard.socket }} </p>
+    <p>Network: {{ motherboard.networking }} </p>
+
+    <a href="{% url 'profile' user.username %}">Back</a>
+    <a href="{% url 'edit_motherboard' pk=object.pk %}">Edit</a>
+    <a href="{% url 'delete_motherboard' pk=object.pk %}">Delete</a>
+
+{% endblock %}
+

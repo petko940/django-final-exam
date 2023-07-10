@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Motherboard {% endblock %}
+
+{% block content %}
+
+    <h1>Edit Motherboard</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <a href="{% url 'detail_motherboard' pk=object.pk %}">Back</a>
+        <input type="submit" value="Edit">
+    </form>
+
+{% endblock %}

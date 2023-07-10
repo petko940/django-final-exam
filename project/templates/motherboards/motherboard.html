@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Motherboard {% endblock %}
+
+{% block content %}
+
+    <div class="motherboard">
+        <div class="image">
+            <img src="{% static 'images/motherboard/motherboard.jpg' %}" alt="">
+        </div>
+
+        <div class="content">
+            <div class="motherboard-text">
+                <h4>You can choose a Motherboard from this page.</h4>
+            </div>
+
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'create_motherboard' %}">Choose Motherboard</a>
+            {% else %}
+                <p>Login to add Motherboard!</p>
+            {% endif %}
+
+            <p class="last-text">Customize your motherboard selection based on your preferences.</p>
+
+        </div>
+    </div>
+
+
+{% endblock %}
