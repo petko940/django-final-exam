@@ -1,0 +1,31 @@
+.components-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+.components-section .section {
+    flex: 1;
+}
+
+.components-section .section-title  {
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+.data-list {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-family: Menlo sans-serif;
+}
+
+.data-list p {
+    margin-top: 40px;
+}
+.data {
+    margin: 0;
+}

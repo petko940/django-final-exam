@@ -14,92 +14,114 @@
         </div>
     {% endif %}
 
-    <div class="profile-details">
-        <p>CPUs</p>
-        {% if cpus %}
-            {% for cpu in cpus %}
-                <p class="data">
-                    {% if cpu.chosen_cpu %}
-                        {{ cpu.chosen_cpu.brand }} {{ cpu.chosen_cpu.name }}
-                    {% else %}
-                        {{ cpu.build_custom_cpu.manufacturer }} {{ cpu.build_custom_cpu.name }}
+
+<div class="components-section">
+    <div class="section">
+        <p class="section-title">CPUs</p>
+        <div class="data-list">
+            {% if cpus %}
+                {% for cpu in cpus %}
+                    <p class="data">
+                        {% if cpu.chosen_cpu %}
+                            {{ cpu.chosen_cpu.brand }} {{ cpu.chosen_cpu.name }}
+                        {% else %}
+                            {{ cpu.build_custom_cpu.manufacturer }} {{ cpu.build_custom_cpu.name }}
+                        {% endif %}
+
+                        {% if request.user.username == user.username %}
+                            <a href="{% url 'detail_cpu' cpu.pk %}">Details</a>
+                        {% endif %}
+                    </p>
+                {% endfor %}
+            {% else %}
+                <p>None</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="section">
+        <p class="section-title">GPUs</p>
+        <div class="data-list">
+            {% if gpus %}
+                {% for gpu in gpus %}
+                    <p class="data">
+                    {% if gpu.chosen_gpu %}
+                        {{ gpu.chosen_gpu.name }}
                     {% endif %}
 
                     {% if request.user.username == user.username %}
-                        <a href="{% url 'detail_cpu' cpu.pk %}">Details</a>
+                        <a href="{% url 'detail_gpu' gpu.pk %}">Details</a>
                     {% endif %}
                 </p>
-            {% endfor %}
-        {% else %}
-            <p>None</p>
-        {% endif %}
-
-        <p>GPUs</p>
-        {% if gpus %}
-            {% for gpu in gpus %}
-                <p class="data">
-                {% if gpu.chosen_gpu %}
-                    {{ gpu.chosen_gpu.name }}
-                {% endif %}
-
-                {% if request.user.username == user.username %}
-                    <a href="{% url 'detail_gpu' gpu.pk %}">Details</a>
-                {% endif %}
-            {% endfor %}
-        {% else %}
-            <p>None</p>
-        {% endif %}
-
-        <p>RAM</p>
-        {% if rams %}
-            {% for ram in rams %}
-                <p class="data">
-                {% if ram %}
-                    {{ ram.brand }} {{ ram.capacity }}GB {{ ram.memory_type }}
-                {% endif %}
-
-                {% if request.user.username == user.username %}
-                    <a href="{% url 'detail_ram' ram.pk %}">Details</a>
-                {% endif %}
-            {% endfor %}
-        {% else %}
-            <p>None</p>
-        {% endif %}
-
-        <p>Storage</p>
-        {% if storages %}
-            {% for storage in storages %}
-                <p class="data">
-                {% if storage %}
-                    {{ storage.brand }} {{ storage.type }} {{ storage.capacity }}GB
-                {% endif %}
-
-                {% if request.user.username == user.username %}
-                    <a href="{% url 'detail_storage' storage.pk %}">Details</a>
-                {% endif %}
-            {% endfor %}
-        {% else %}
-            <p>None</p>
-        {% endif %}
-
-        <p>Motherboards</p>
-        {% if motherboards %}
-            {% for motherboard in motherboards %}
-                <p class="data">
-                {% if motherboard %}
-                    {{ motherboard.manufacturer }} {{ motherboard.model }}
-                {% endif %}
-
-                {% if request.user.username == user.username %}
-                    <a href="{% url 'detail_motherboard' motherboard.pk %}">Details</a>
-                {% endif %}
-            {% endfor %}
-        {% else %}
-            <p>None</p>
-        {% endif %}
-
-
-    Add pc if all fields are filled
+                {% endfor %}
+            {% else %}
+                <p>None</p>
+            {% endif %}
+        </div>
     </div>
+
+    <div class="section">
+        <p class="section-title">RAM</p>
+        <div class="data-list">
+            {% if rams %}
+                {% for ram in rams %}
+                    <p class="data">
+                    {% if ram %}
+                        {{ ram.brand }} {{ ram.capacity }}GB {{ ram.memory_type }}
+                    {% endif %}
+
+                    {% if request.user.username == user.username %}
+                        <a href="{% url 'detail_ram' ram.pk %}">Details</a>
+                    {% endif %}
+                </p>
+                {% endfor %}
+            {% else %}
+                <p>None</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="section">
+        <p class="section-title">Storage</p>
+        <div class="data-list">
+            {% if storages %}
+                {% for storage in storages %}
+                    <p class="data">
+                    {% if storage %}
+                        {{ storage.brand }} {{ storage.type }} {{ storage.capacity }}GB
+                    {% endif %}
+
+                    {% if request.user.username == user.username %}
+                        <a href="{% url 'detail_storage' storage.pk %}">Details</a>
+                    {% endif %}
+                </p>
+                {% endfor %}
+            {% else %}
+                <p>None</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="section">
+        <p class="section-title">Motherboards</p>
+        <div class="data-list">
+            {% if motherboards %}
+                {% for motherboard in motherboards %}
+                    <p class="data">
+                    {% if motherboard %}
+                        {{ motherboard.manufacturer }} {{ motherboard.model }}
+                    {% endif %}
+
+                    {% if request.user.username == user.username %}
+                        <a href="{% url 'detail_motherboard' motherboard.pk %}">Details</a>
+                    {% endif %}
+                </p>
+                {% endfor %}
+            {% else %}
+                <p>None</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}
