@@ -23,5 +23,4 @@ urlpatterns = [
         path('change-username/', profile_username_change_view, name='profile_username_change_view'),
         path('change-password/', ProfilePasswordChangeView.as_view(), name='profile_change_password'),
     ])),
-
 ]

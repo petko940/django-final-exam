@@ -110,3 +110,11 @@ class ChosenCpus(models.Model):
         on_delete=models.CASCADE,
         null=True,
     )
+
+    def __str__(self):
+        if self.chosen_cpu:
+            output = f'{self.chosen_cpu.name} {self.chosen_cpu.cores}Cores {self.chosen_cpu.base_frequency}GHz'
+            return output
+        elif self.build_custom_cpu:
+            output = f'{self.build_custom_cpu.name} {self.build_custom_cpu.number_of_cores}Cores {self.build_custom_cpu.clock_speed}GHz'
+            return output

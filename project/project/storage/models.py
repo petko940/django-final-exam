@@ -60,3 +60,6 @@ class Storage(models.Model):
         on_delete=models.CASCADE,
         editable=False,
     )
+
+    def __str__(self):
+        return f'{self.brand} {self.type} {self.capacity}GB {self.interface}'

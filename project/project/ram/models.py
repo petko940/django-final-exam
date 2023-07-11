@@ -115,3 +115,5 @@ class RAM(models.Model):
         editable=False,
     )
 
+    def __str__(self):
+        return f'{self.brand} {self.capacity}GB {self.memory_type} {self.speed}MHz'

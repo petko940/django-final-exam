@@ -10,16 +10,16 @@
         You are not logged
     {% endif %}
 
-        {% for cpu in cpus %}
-            <p>
-                {% if cpu.chosen_cpu %}
-                    {{ cpu.chosen_cpu.name }}
-                {% else %}
-                    {{ cpu.build_custom_cpu.name }}
-                {% endif %}
-                <a href="{% url 'delete_cpu' cpu.pk %}">Delete</a>
-            </p>
-        {% endfor %}
+    {% for cpu in cpus %}
+        <p>
+            {% if cpu.chosen_cpu %}
+                {{ cpu.chosen_cpu.name }}
+            {% else %}
+                {{ cpu.build_custom_cpu.name }}
+            {% endif %}
+            <a href="{% url 'delete_cpu' cpu.pk %}">Delete</a>
+        </p>
+    {% endfor %}
 
 
 

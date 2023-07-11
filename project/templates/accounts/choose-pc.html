@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Choose PC to show {% endblock %}
+
+{% block content %}
+
+    <form method="post">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button class="select-pc" type="submit">Done</button>
+
+    </form>
+
+{% endblock %}

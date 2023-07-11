@@ -1,5 +1,9 @@
-from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, CreateView
 
+from project.common.forms import ShowPCForm
 from project.cpus.models import ChosenCpus
 
 
@@ -7,10 +11,20 @@ from project.cpus.models import ChosenCpus
 class HomeView(TemplateView):
     template_name = 'common/home.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     try:
-    #         context['cpus'] = ChosenCpus.objects.filter(user=self.request.user)
-    #     except:
-    #         pass
-    #     return context
+
+class ShowPCView(LoginRequiredMixin, CreateView):
+    template_name = 'accounts/choose-pc.html'
+    form_class = ShowPCForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.user_id = self.request.user.id
+        return super().form_valid(form)
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
+
+        if self.request.user.username != kwargs['username']:
+            return redirect("access_denied_view")
+        return super().dispatch(request, *args, **kwargs)

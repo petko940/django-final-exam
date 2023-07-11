@@ -56,5 +56,9 @@ class Motherboard(models.Model):
 
     def save(self, *args, **kwargs):
         self.chipset = ''.join([c.upper() if not c.isdigit() else c for c in self.chipset])
+        self.socket = ''.join([c.upper() if not c.isdigit() else c for c in self.socket])
 
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.manufacturer} {self.model} {self.form_factor}'

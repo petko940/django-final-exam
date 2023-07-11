@@ -24,7 +24,7 @@ class AllGpus(models.Model):
         blank=True,
         null=True,
     )
-    memory_size = models.PositiveIntegerField(
+    memory_size = models.FloatField(
         verbose_name='Memory size',
         blank=True,
         null=True,
@@ -60,3 +60,6 @@ class ChosenGpus(models.Model):
         to=AllGpus,
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return f'{self.chosen_gpu.name} {self.chosen_gpu.memory_size}GB'
