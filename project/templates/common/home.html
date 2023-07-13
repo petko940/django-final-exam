@@ -10,16 +10,13 @@
         You are not logged
     {% endif %}
 
-    {% for cpu in cpus %}
-        <p>
-            {% if cpu.chosen_cpu %}
-                {{ cpu.chosen_cpu.name }}
-            {% else %}
-                {{ cpu.build_custom_cpu.name }}
-            {% endif %}
-            <a href="{% url 'delete_cpu' cpu.pk %}">Delete</a>
-        </p>
-    {% endfor %}
+    <div class="show-pc">
+        {% for pc in show_pc %}
+            <div class="pc">
+                {{ pc.user }} {{ pc.choose_cpu }} {{ pc.choose_gpu }} {{ pc.choose_ram }} {{ pc.choose_storage }} {{ pc.choose_motherboard }}
+            </div>
+        {% endfor %}
+    </div>
 
 
 

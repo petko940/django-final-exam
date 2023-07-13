@@ -18,6 +18,9 @@
         <div class="choose-pc-to-show">
             <a href="{% url 'choose_pc' request.user.username %}">choose pc to show</a>
         </div>
+        <div class="choose-pc-to-show">
+            <a href="{% url 'selected_pc' request.user.username %}">show selected pc</a>
+        </div>
     {% endif %}
 
     <div class="components-section">
@@ -87,27 +90,6 @@
         </div>
 
         <div class="section">
-            <p class="section-title">Storage</p>
-            <div class="data-list">
-                {% if storages %}
-                    {% for storage in storages %}
-                        <p class="data">
-                            {% if storage %}
-                                {{ storage.brand }} {{ storage.type }} {{ storage.capacity }}GB
-                            {% endif %}
-
-                            {% if request.user.username == user.username %}
-                                <a href="{% url 'detail_storage' storage.pk %}">Details</a>
-                            {% endif %}
-                        </p>
-                    {% endfor %}
-                {% else %}
-                    <p>None</p>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="section">
             <p class="section-title">Motherboards</p>
             <div class="data-list">
                 {% if motherboards %}
@@ -119,6 +101,27 @@
 
                             {% if request.user.username == user.username %}
                                 <a href="{% url 'detail_motherboard' motherboard.pk %}">Details</a>
+                            {% endif %}
+                        </p>
+                    {% endfor %}
+                {% else %}
+                    <p>None</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="section">
+            <p class="section-title">Storage</p>
+            <div class="data-list">
+                {% if storages %}
+                    {% for storage in storages %}
+                        <p class="data">
+                            {% if storage %}
+                                {{ storage.brand }} {{ storage.type }} {{ storage.capacity }}GB
+                            {% endif %}
+
+                            {% if request.user.username == user.username %}
+                                <a href="{% url 'detail_storage' storage.pk %}">Details</a>
                             {% endif %}
                         </p>
                     {% endfor %}

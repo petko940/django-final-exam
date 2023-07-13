@@ -6,9 +6,11 @@
 
     <form method="post">
 
+        {{ user }}
         {% csrf_token %}
         {{ form.as_p }}
 
+        <a href="{% url 'profile' request.user.username %}">Back</a>
         <button class="select-pc" type="submit">Done</button>
 
     </form>

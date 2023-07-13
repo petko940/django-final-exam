@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from project.common.models import ShowPC
+
+
+@admin.register(ShowPC)
+class AllCpusAdmin(admin.ModelAdmin):
+    pass

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Remove Shown PC {% endblock %}
+
+{% block content %}
+
+    {% if selected_pcs %}
+        <h2>Selected PCs Show</h2>
+
+        {% for selected_pc in selected_pcs %}
+            <p>CPU: {{ selected_pc.choose_cpu }}</p>
+            <p>GPU: {{ selected_pc.choose_gpu }}</p>
+            <p>RAM: {{ selected_pc.choose_ram }}</p>
+            <p>Motherboard: {{ selected_pc.choose_motherboards }}</p>
+            <p>Storage: {{ selected_pc.choose_storage }}</p>
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                <input type="hidden" name="selected_pc_id" value="{{ selected_pc.id }}">
+                <input type="submit" value="Delete">
+
+            </form>
+
+            <hr>
+        {% endfor %}
+
+    {% else %}
+        <p>No PC selected.</p>
+        <a href="{% url 'choose_pc' request.user.username %}">Choose PC</a>
+    {% endif %}
+                    <a href="{% url 'profile' request.user.username %}">Back</a>
+
+
+{% endblock %}
