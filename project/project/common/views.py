@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
@@ -21,7 +22,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['show_pc'] = ShowPC.objects.all()
+        context['show_pc'] = ShowPC.objects.annotate(num_likes=Count('likes')).order_by('-num_likes')
         return context
 
 
@@ -104,7 +105,6 @@ def like_pc(request, pc_id):
     else:
         pc.likes.add(user)
 
-    redirect_url = request.META.get('HTTP_REFERER', 'home') + '#pc-' + str(pc.id)
+    return redirect(request.META.get('HTTP_REFERER', 'home') + '#pc-' + str(pc.id))
 
-    return redirect(redirect_url)
-    # return redirect('home')
+

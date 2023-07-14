@@ -44,5 +44,3 @@ class ShowPC(models.Model):
         related_name='liked_pcs',
         blank=True
     )
-
-

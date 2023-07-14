@@ -4,16 +4,35 @@ body.home {
     background-size: cover;
 }
 
-.like-button img {
-    width: 50px;
+.show-pc {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.like-button {
+.pc {
+    width: 28%;
+    margin: 20px auto 10px;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid #00691a;
+    padding: 10px;
+}
+
+.pc-text {
+    font-family: Georgia, serif;
+
+}
+.pc .like-button img {
+    width: 30px;
+}
+
+.pc .like-button {
     background-color: initial;
     border: none;
 }
 
-.like-button:hover {
+.pc .like-button:hover {
     background-color: initial;
     border: none;
 }

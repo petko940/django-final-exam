@@ -8,4 +8,5 @@ urlpatterns = [
     path('profile/<username>/selected-pc/', SelectedPCView.as_view(), name='selected_pc'),
     path('remove-pc/remove/<int:pk>/', DeleteSelectedPCView.as_view(), name='remove_pc'),
 
-    path('like_pc/<int:pc_id>/', like_pc, name='like_pc'),]
+    path('like_pc/<int:pc_id>/', like_pc, name='like_pc'),
+]

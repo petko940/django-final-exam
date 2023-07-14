@@ -8,33 +8,39 @@
     {% if user.is_authenticated %}
         Username: {{ user.username }}
     {% else %}
-        You are not logged
+        Login to build and show your PC
     {% endif %}
 
     <div class="show-pc">
         {% for pc in show_pc %}
-
             <div class="pc">
-                {{ pc.user }} {{ pc.choose_cpu }} {{ pc.choose_gpu }} {{ pc.choose_ram }} {{ pc.choose_storage }} {{ pc.choose_motherboard }}
 
-                Likes: {{ pc.likes.count }}
+                <div class="pc-text">
+                    <p>PC by {{ pc.user }}</p>
+                    <p>CPU: {{ pc.choose_cpu }}</p>
+                    <p>GPU: {{ pc.choose_gpu }}</p>
+                    <p>RAM: {{ pc.choose_ram }}</p>
+                    <p>Storage: {{ pc.choose_storage }}</p>
+                    <p>Motherboard: {{ pc.choose_motherboards }}</p>
+                    <p>Likes: {{ pc.likes.count }}</p>
+                </div>
+
                 <form method="POST" action="{% url 'like_pc' pc.id %}">
                     {% csrf_token %}
-                    {% if request.user.is_authenticated and user.username != pc.user.username %}
-                        {% if user in pc.likes.all %}
-                            <button type="submit" class="like-button">
-                                <img src="{% static 'images/like.png' %}" alt="">
-                            </button>
-                        {% else %}
-                            <button type="submit" class="like-button">
-                                <img src="{% static 'images/unlike.png' %}" alt="">
-                            </button>
-                        {% endif %}
+                    {% if user in pc.likes.all %}
+                        <button type="submit" class="like-button">
+                            <img src="{% static 'images/like.png' %}" alt="">
+                        </button>
+                    {% else %}
+                        <button type="submit" class="like-button">
+                            <img src="{% static 'images/unlike.png' %}" alt="">
+                        </button>
                     {% endif %}
                 </form>
-            </div>
 
+            </div>
         {% endfor %}
     </div>
+
 
 {% endblock %}
