@@ -39,3 +39,10 @@ class ShowPC(models.Model):
         to=Storage,
         on_delete=models.CASCADE
     )
+    likes = models.ManyToManyField(
+        to=User,
+        related_name='liked_pcs',
+        blank=True
+    )
+
+

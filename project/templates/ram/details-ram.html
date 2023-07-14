@@ -4,16 +4,20 @@
 
 {% block content %}
 
-    <h1>RAM Information</h1>
+    <section class="components-details">
 
-    <p>Brand: {{ ram.brand }}</p>
-    <p>Name: {{ ram.memory_type }}</p>
-    <p>Speed: {{ ram.speed }}MHz</p>
-    <p>Capacity: {{ ram.capacity }}GB</p>
+        <h1>RAM Information</h1>
 
-    <a href="{% url 'profile' user.username %}">Back</a>
-    <a href="{% url 'edit_ram' pk=object.pk %}">Edit</a>
-    <a href="{% url 'delete_ram' pk=object.pk %}">Delete</a>
+        <p>Brand: {{ ram.brand }}</p>
+        <p>Name: {{ ram.memory_type }}</p>
+        <p>Speed: {{ ram.speed }}MHz</p>
+        <p>Capacity: {{ ram.capacity }}GB</p>
+
+        <a href="{% url 'profile' user.username %}" class="link-back">Back</a>
+        <a href="{% url 'edit_ram' pk=object.pk %}" class="link-edit">Edit</a>
+        <a href="{% url 'delete_ram' pk=object.pk %}" class="link-delete">Delete</a>
+
+    </section>
 
 {% endblock %}
 

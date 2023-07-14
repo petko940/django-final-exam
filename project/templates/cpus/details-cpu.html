@@ -4,31 +4,37 @@
 
 {% block content %}
 
-    <h1>CPU Information:</h1>
+    <section class="components-details">
 
-    {% if cpu_info %}
-        <p>Brand: {{ cpu_info.brand }}</p>
-        <p>Name: {{ cpu_info.name }}</p>
-        <p>Cores: {{ cpu_info.cores }}</p>
-        <p>Threads: {{ cpu_info.threads }}</p>
-        <p>Base frequency: {{ cpu_info.base_frequency }}GHz</p>
-        <p>Max turbo frequency: {{ cpu_info.max_turbo_frequency }}GHz</p>
-        <p>TDP: {{ cpu_info.tdp }}W</p>
+        <h1>CPU Information</h1>
 
-    {% else %}
+        {% if cpu_info %}
+            <p>Brand: {{ cpu_info.brand }}</p>
+            <p>Name: {{ cpu_info.name }}</p>
+            <p>Cores: {{ cpu_info.cores }}</p>
+            <p>Threads: {{ cpu_info.threads }}</p>
+            <p>Base frequency: {{ cpu_info.base_frequency }}GHz</p>
+            <p>Max turbo frequency: {{ cpu_info.max_turbo_frequency }}GHz</p>
+            <p>TDP: {{ cpu_info.tdp }}W</p>
 
-        <p>Name: {{ custom_cpu_info.name }}</p>
-        <p>Manufacturer: {{ custom_cpu_info.manufacturer }}</p>
-        <p>Clock speed: {{ custom_cpu_info.clock_speed }}GHz</p>
-        <p>Number cores: {{ custom_cpu_info.number_of_cores }}</p>
-        <p>Cache size: {{ custom_cpu_info.cache_size }}MB</p>
-        <p>Max RAM: {{ custom_cpu_info.max_ram }}</p>
+            <a href="{% url 'profile' user.username %}" class="link-back">Back</a>
+            <a href="{% url 'delete_cpu' pk=object.pk %}" class="link-delete">Delete</a>
 
-        <a href="{% url 'edit_cpu' pk=object.pk %}">Edit</a>
+        {% else %}
 
-    {% endif %}
+            <p>Name: {{ custom_cpu_info.name }}</p>
+            <p>Manufacturer: {{ custom_cpu_info.manufacturer }}</p>
+            <p>Clock speed: {{ custom_cpu_info.clock_speed }}GHz</p>
+            <p>Number cores: {{ custom_cpu_info.number_of_cores }}</p>
+            <p>Cache size: {{ custom_cpu_info.cache_size }}MB</p>
+            <p>Max RAM: {{ custom_cpu_info.max_ram }}</p>
 
-    <a href="{% url 'delete_cpu' pk=object.pk %}">Delete</a>
+            <a href="{% url 'profile' user.username %}" class="link-back">Back</a>
+            <a href="{% url 'edit_cpu' pk=object.pk %}" class="link-edit">Edit</a>
+            <a href="{% url 'delete_cpu' pk=object.pk %}" class="link-delete">Delete</a>
 
+        {% endif %}
+
+    </section>
 
 {% endblock %}

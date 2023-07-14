@@ -4,17 +4,26 @@
 
 {% block content %}
 
-    <h3>Are you sure you want to delete Motherboard {{ motherboard.manufacturer }} {{ motherboard.model }} ?</h3>
+    <section class="components-details">
 
-    <form method="post">
+        <h3>Are you sure you want to delete Motherboard
+            <span class="highlight-component">
+                {{ motherboard.manufacturer }} {{ motherboard.model }}
+            </span>
+            ?
+        </h3>
 
-        {% csrf_token %}
-        {{ form.as_p }}
+        <form method="post">
 
-        <a href="{% url 'detail_motherboard' pk=object.pk %}">Back</a>
-        <input type="submit" value="Delete">
+            {% csrf_token %}
+            {{ form.as_p }}
 
-    </form>
+            <a href="{% url 'detail_motherboard' pk=object.pk %}" class="link-back">Back</a>
+            <input type="submit" value="Delete" class="link-delete">
+
+        </form>
+
+    </section>
 
 {% endblock %}
 

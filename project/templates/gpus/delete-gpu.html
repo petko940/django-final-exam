@@ -4,15 +4,28 @@
 
 {% block content %}
 
-    <h3>Are you sure you want to delete this GPU ?</h3>
-    <form method="post">
+    <section class="components-details">
 
-        {% csrf_token %}
-        {{ form }}
+        <h3>Are you sure you want to delete GPU
+            <span class="highlight-component">
+                  {{ chosengpus.chosen_gpu.manufacturer }} {{ chosengpus.chosen_gpu.name }}
+                {% if  chosengpus.chosen_gpu.memory_size > 1 %} {{ chosengpus.chosen_gpu.memory_size|floatformat:0 }}GB
+                {% else %}
+                    {{ chosengpus.chosen_gpu.memory_size }}GB
+                {% endif %}
+            </span>
+            ?
+        </h3>
 
-        <a href="{% url 'detail_gpu' pk=object.pk %}">Back</a>
-        <input type="submit" value="Delete">
+        <form method="post">
 
-    </form>
+            {% csrf_token %}
+            {{ form }}
 
+            <a href="{% url 'detail_gpu' pk=object.pk %}" class="link-back">Back</a>
+            <input type="submit" class="link-delete" value="Delete">
+
+        </form>
+
+    </section>
 {% endblock %}

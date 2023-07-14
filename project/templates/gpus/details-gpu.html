@@ -4,22 +4,26 @@
 
 {% block content %}
 
-    <h1>GPU Information:</h1>
+    <section class="components-details">
 
-    <p>Name: {{ gpu_details.manufacturer }} {{ gpu_details.name }}</p>
-    {% if gpu_details.memory_size %}
-        <p>Memory Size: {{ gpu_details.memory_size }}GB</p>
-    {% endif %}
+        <h1>GPU Information</h1>
 
-    <p>GPU Clock: {{ gpu_details.gpu_clock }}MHz</p>
-    {% if gpu_details.memory_clock %}
-        <p>Memory Clock: {{ gpu_details.memory_clock }}MHz</p>
-    {% endif %}
+        <p>Name: {{ gpu_details.manufacturer }} {{ gpu_details.name }}</p>
+        {% if gpu_details.memory_size %}
+            <p>Memory Size: {{ gpu_details.memory_size }}GB</p>
+        {% endif %}
 
-    <p>Memory Type: {{ gpu_details.memory_type }}</p>
-    <p>Release Year: {{ gpu_details.release_year }}</p>
+        <p>GPU Clock: {{ gpu_details.gpu_clock }}MHz</p>
+        {% if gpu_details.memory_clock %}
+            <p>Memory Clock: {{ gpu_details.memory_clock }}MHz</p>
+        {% endif %}
 
-    <a href="{% url 'delete_gpu' pk=object.pk %}">Delete</a>
+        <p>Memory Type: {{ gpu_details.memory_type }}</p>
+        <p>Release Year: {{ gpu_details.release_year }}</p>
 
+        <a href="{% url 'profile' user.username %}" class="link-back">Back</a>
+        <a href="{% url 'delete_gpu' pk=object.pk %}" class="link-delete">Delete</a>
+
+    </section>
 
 {% endblock %}

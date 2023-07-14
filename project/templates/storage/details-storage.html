@@ -4,21 +4,25 @@
 
 {% block content %}
 
-    <h1>Storage Information</h1>
+    <section class="components-details">
 
-    <p>Brand: {{ storage.brand }}</p>
-    <p>Type: {{ storage.type }}</p>
-    <p>Capacity: {{ storage.capacity }}GB</p>
-    <p>Interface: {{ storage.interface }}</p>
-    {% if storage.read_speed %}
-        <p>Read Speed: {{ storage.read_speed }}MB/s</p>
-    {% endif %}
-    {% if storage.write_speed %}
-        <p>Write Speed: {{ storage.write_speed }}MB/s</p>
-    {% endif %}
+        <h1>Storage Information</h1>
 
-    <a href="{% url 'profile' user.username %}">Back</a>
-    <a href="{% url 'edit_storage' pk=object.pk %}">Edit</a>
-    <a href="{% url 'delete_storage' pk=object.pk %}">Delete</a>
+        <p>Brand: {{ storage.brand }}</p>
+        <p>Type: {{ storage.type }}</p>
+        <p>Capacity: {{ storage.capacity }}GB</p>
+        <p>Interface: {{ storage.interface }}</p>
+        {% if storage.read_speed %}
+            <p>Read Speed: {{ storage.read_speed }}MB/s</p>
+        {% endif %}
+        {% if storage.write_speed %}
+            <p>Write Speed: {{ storage.write_speed }}MB/s</p>
+        {% endif %}
+
+        <a href="{% url 'profile' user.username %}" class="link-back">Back</a>
+        <a href="{% url 'edit_storage' pk=object.pk %}" class="link-edit">Edit</a>
+        <a href="{% url 'delete_storage' pk=object.pk %}" class="link-delete">Delete</a>
+
+    </section>
 
 {% endblock %}

@@ -4,14 +4,26 @@
 
 {% block content %}
 
-    <h1>Edit Motherboard</h1>
+    <section class="components-details">
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+        <h1>Edit Motherboard</h1>
 
-        <a href="{% url 'detail_motherboard' pk=object.pk %}">Back</a>
-        <input type="submit" value="Edit">
-    </form>
+        <div class="motherboard-choose">
+            <div class="motherboard-form">
+
+                <form method="post">
+
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <a href="{% url 'detail_motherboard' pk=object.pk %}" class="link-back">Back</a>
+                    <input type="submit" value="Edit">
+
+                </form>
+
+            </div>
+        </div>
+
+    </section>
 
 {% endblock %}

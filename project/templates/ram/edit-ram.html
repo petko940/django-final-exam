@@ -5,17 +5,27 @@
 
 {% block content %}
 
-    <h1>Edit RAM</h1>
+    <section class="components-details">
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+        <h1>Edit RAM</h1>
 
-        <a href="{% url 'detail_ram' pk=object.pk %}">Back</a>
-        <input type="submit" value="Edit">
-    </form>
+        <section class="ram">
+
+            <div class="ram-form">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <a href="{% url 'detail_ram' pk=object.pk %}" class="link-back">Back</a>
+                    <input type="submit" class="link-edit" value="Edit">
+                </form>
+            </div>
+
+        </section>
+    </section>
 
     <script src="{% static 'js/update_ram_speed.js' %}"></script>
+
 
 {% endblock %}
 

@@ -198,6 +198,7 @@ body.accounts {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .access_denied h1 {
@@ -212,4 +213,25 @@ body.accounts {
     font-size: 30px;
     margin-top: 20px;
     font-family: Verdana sans-serif;
+}
+
+.profile-start {
+    text-align: center;
+    font-size: 20px;
+    font-family: Verdana, sans-serif;
+}
+
+.not-selected h3 {
+    font-family: Georgia, sans-serif;
+}
+
+.not-chosen-components h2 {
+    text-align: center;
+    font-family: Gadugi, sans-serif;
+    color: #670005;
+}
+
+.link-style {
+    color: blue;
+    text-decoration: none;
 }

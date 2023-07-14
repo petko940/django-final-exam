@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import View
+from django.views.decorators.http import require_POST
 from django.views.generic import TemplateView, CreateView, DeleteView, DetailView
 
 from project.common.models import ShowPC
@@ -19,12 +21,12 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['show_pc'] = ShowPC.objects.all()[:10]
+        context['show_pc'] = ShowPC.objects.all()
         return context
 
 
 class ChoosePCToShowView(LoginRequiredMixin, CreateView):
-    template_name = 'accounts/choose-pc.html'
+    template_name = 'common/choose-pc.html'
     success_url = reverse_lazy('home')
     model = ShowPC
     fields = ['choose_cpu', 'choose_gpu', 'choose_ram', 'choose_motherboards', 'choose_storage']
@@ -75,9 +77,34 @@ class SelectedPCView(LoginRequiredMixin, TemplateView):
                 selected_pc.delete()
         return redirect('selected_pc', username=self.request.user.username)
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
+
+        if self.request.user.username != kwargs['username']:
+            return redirect("access_denied_view")
+        return super().dispatch(request, *args, **kwargs)
+
 
 class DeleteSelectedPCView(LoginRequiredMixin, DeleteView):
     model = ShowPC
 
     def get_success_url(self):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})
+
+
+@login_required
+@require_POST
+def like_pc(request, pc_id):
+    pc = get_object_or_404(ShowPC, id=pc_id)
+    user = request.user
+
+    if user in pc.likes.all():
+        pc.likes.remove(user)
+    else:
+        pc.likes.add(user)
+
+    redirect_url = request.META.get('HTTP_REFERER', 'home') + '#pc-' + str(pc.id)
+
+    return redirect(redirect_url)
+    # return redirect('home')

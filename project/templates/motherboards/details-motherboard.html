@@ -4,18 +4,22 @@
 
 {% block content %}
 
-    <h1>Motherboard Information</h1>
+    <section class="components-details">
 
-    <p>Manufacturer: {{ motherboard.manufacturer }} </p>
-    <p>Model: {{ motherboard.model }} </p>
-    <p>Form Factor: {{ motherboard.form_factor }} </p>
-    <p>Chipset: {{ motherboard.chipset }} </p>
-    <p>Socket: {{ motherboard.socket }} </p>
-    <p>Network: {{ motherboard.networking }} </p>
+        <h1>Motherboard Information</h1>
 
-    <a href="{% url 'profile' user.username %}">Back</a>
-    <a href="{% url 'edit_motherboard' pk=object.pk %}">Edit</a>
-    <a href="{% url 'delete_motherboard' pk=object.pk %}">Delete</a>
+        <p>Manufacturer: {{ motherboard.manufacturer }} </p>
+        <p>Model: {{ motherboard.model }} </p>
+        <p>Form Factor: {{ motherboard.form_factor }} </p>
+        <p>Chipset: {{ motherboard.chipset }} </p>
+        <p>Socket: {{ motherboard.socket }} </p>
+        <p>Network: {{ motherboard.networking }} </p>
+
+        <a href="{% url 'profile' user.username %}" class="link-back">Back</a>
+        <a href="{% url 'edit_motherboard' pk=object.pk %}" class="link-edit">Edit</a>
+        <a href="{% url 'delete_motherboard' pk=object.pk %}" class="link-delete">Delete</a>
+
+    </section>
 
 {% endblock %}
 

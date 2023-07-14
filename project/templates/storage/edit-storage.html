@@ -3,16 +3,36 @@
 {% block title %} Storage Edit {% endblock %}
 
 {% block content %}
-    <h1>Edit Storage</h1>
 
-    <form method="post">
+    <section class="components-details">
+        <h1>Edit Storage</h1>
 
-        {% csrf_token %}
-        {{ form.as_p }}
+        <section class="storage-section">
+            <div class="ram-form">
+                <form method="post">
 
-        <a href="{% url 'detail_storage' pk=object.pk %}">Back</a>
-        <input type="submit" value="Edit">
+                    {% csrf_token %}
 
-    </form>
+                    {% for field in form %}
+                        <div class="form-field{% if field.errors %} has-error{% elif field.value %} has-success{% endif %}">
+                            {{ field.label }}
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="error-message">
+                                    {{ field.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                            <br>
+                        </div>
+                    {% endfor %}
+
+                    <a href="{% url 'detail_storage' pk=object.pk %}" class="link-back">Back</a>
+                    <input type="submit" value="Edit" class="link-edit">
+
+                </form>
+
+            </div>
+        </section>
+    </section>
 
 {% endblock %}

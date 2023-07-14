@@ -4,15 +4,9 @@
 
 {% block content %}
 
-    <h1>Profile view</h1>
-
-    {% if request.user.username == user.username %}
-        <div class="profile-details">
-            <a href="{% url 'profile_delete' request.user.username %}" class="button">Delete profile</a>
-            <a href="{% url 'profile_username_change_view' request.user.username %}" class="button">Change username</a>
-            <a href="{% url 'profile_change_password' request.user.username %}" class="button">Change password</a>
-        </div>
-    {% endif %}
+    <div class="profile-start">
+        <h1>Hello {{ user.username }}</h1>
+    </div>
 
     {% if cpus and gpus and rams and storages and motherboards and request.user.username == user.username %}
         <div class="choose-pc-to-show">
@@ -21,6 +15,9 @@
         <div class="choose-pc-to-show">
             <a href="{% url 'selected_pc' request.user.username %}">show selected pc</a>
         </div>
+    {% else %}
+        <div class="not-chosen-components">
+        <h2>You must have at least one of each component to be able to display it</h2>
     {% endif %}
 
     <div class="components-section">
@@ -37,12 +34,15 @@
                             {% endif %}
 
                             {% if request.user.username == user.username %}
-                                <a href="{% url 'detail_cpu' cpu.pk %}">Details</a>
+                                <a href="{% url 'detail_cpu' cpu.pk %}" class="link-style">Details</a>
                             {% endif %}
                         </p>
                     {% endfor %}
                 {% else %}
-                    <p>None</p>
+                    <div class="not-selected">
+                        <h3>Choose at least one</h3>
+                        <a href="{% url 'choose_cpu' %}">choose</a>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -58,12 +58,15 @@
                             {% endif %}
 
                             {% if request.user.username == user.username %}
-                                <a href="{% url 'detail_gpu' gpu.pk %}">Details</a>
+                                <a href="{% url 'detail_gpu' gpu.pk %}" class="link-style">Details</a>
                             {% endif %}
                         </p>
                     {% endfor %}
                 {% else %}
-                    <p>None</p>
+                    <div class="not-selected">
+                        <h3>Choose at least one</h3>
+                        <a href="{% url 'choose_gpu' %}">choose</a>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -79,12 +82,15 @@
                             {% endif %}
 
                             {% if request.user.username == user.username %}
-                                <a href="{% url 'detail_ram' ram.pk %}">Details</a>
+                                <a href="{% url 'detail_ram' ram.pk %}" class="link-style">Details</a>
                             {% endif %}
                         </p>
                     {% endfor %}
                 {% else %}
-                    <p>None</p>
+                    <div class="not-selected">
+                        <h3>Choose at least one</h3>
+                        <a href="{% url 'choose_ram' %}">choose</a>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -100,12 +106,15 @@
                             {% endif %}
 
                             {% if request.user.username == user.username %}
-                                <a href="{% url 'detail_motherboard' motherboard.pk %}">Details</a>
+                                <a href="{% url 'detail_motherboard' motherboard.pk %}" class="link-style">Details</a>
                             {% endif %}
                         </p>
                     {% endfor %}
                 {% else %}
-                    <p>None</p>
+                    <div class="not-selected">
+                        <h3>Choose at least one</h3>
+                        <a href="{% url 'create_motherboard' %}">choose</a>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -121,15 +130,29 @@
                             {% endif %}
 
                             {% if request.user.username == user.username %}
-                                <a href="{% url 'detail_storage' storage.pk %}">Details</a>
+                                <a href="{% url 'detail_storage' storage.pk %}" class="link-style">Details</a>
                             {% endif %}
                         </p>
                     {% endfor %}
                 {% else %}
-                    <p>None</p>
+                    <div class="not-selected">
+                        <h3>Choose at least one</h3>
+                        <a href="{% url 'choose_storage' %}">choose</a>
+                    </div>
                 {% endif %}
             </div>
         </div>
     </div>
+
+    <hr>
+
+    {% if request.user.username == user.username %}
+        <div class="profile-details">
+            <a href="{% url 'profile_username_change_view' request.user.username %}" class="button">Change username</a>
+            <a href="{% url 'profile_change_password' request.user.username %}" class="button">Change password</a>
+            <a href="{% url 'profile_delete' request.user.username %}" class="button" style="background-color: darkred">Delete
+                profile</a>
+        </div>
+    {% endif %}
 
 {% endblock %}

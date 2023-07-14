@@ -3,16 +3,37 @@
 {% block title %} Edit CPU {% endblock %}
 
 {% block content %}
-    <h1>Edit CPU</h1>
 
-    <form method="post">
+    <section class="components-details">
 
-        {% csrf_token %}
-        {{ form.as_p }}
+        <h1>Edit CPU</h1>
 
-        <input type="submit" value="Edit">
+        <section class="cpus-build">
+            <div class="cpus-form-build">
+                <form method="post">
 
-    </form>
+                    {% csrf_token %}
 
+                    {% for field in form %}
+                        <div class="form-field{% if field.errors %} has-error{% elif field.value %} has-success{% endif %}">
+                            {{ field.label }}
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="error-message">
+                                    {{ field.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                            <br>
+                        </div>
+                    {% endfor %}
+
+                    <a class="button-back-cpu" href="{% url 'home_cpu' %}">Back</a>
+                    <input type="submit" value="Edit">
+
+                </form>
+            </div>
+
+        </section>
+    </section>
 {% endblock %}
 

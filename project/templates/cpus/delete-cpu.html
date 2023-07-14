@@ -4,25 +4,36 @@
 
 {% block content %}
 
-    {% if chosencpus.chosen_cpu %}
-        <h3>Are you sure you want to delete
-            CPU {{ chosencpus.chosen_cpu.brand }} {{ chosencpus.chosen_cpu.name }} {{ chosencpus.chosen_cpu.cores }}Cores {{ chosencpus.chosen_cpu.base_frequency }}GHzz
-            ?</h3>
-    {% else %}
-        <h3>Are you sure you want to delete
-            CPU {{ chosencpus.build_custom_cpu.manufacturer }} {{ chosencpus.build_custom_cpu.name }}
-            {{ chosencpus.build_custom_cpu.number_of_cores }}Cores {{ chosencpus.build_custom_cpu.clock_speed }}GHz
-            ?</h3>
-    {% endif %}
+    <section class="components-details">
 
-    <form method="post">
+        {% if chosencpus.chosen_cpu %}
+            <h1>
+                Are you sure you want to delete CPU
+                <span class="highlight-component">
+                   {% if chosencpus.chosen_cpu.name|slice:3 != "AMD" %}
+                       {{ chosencpus.chosen_cpu.brand }} {% endif %}{{ chosencpus.chosen_cpu.name }} {{ chosencpus.chosen_cpu.cores }}Cores {{ chosencpus.chosen_cpu.base_frequency }}GHz
+                </span>
+                ?
+            </h1>
+        {% else %}
+            <h1>Are you sure you want to delete CPU
+                <span class="highlight-component">
+                    {{ chosencpus.build_custom_cpu.manufacturer }} {{ chosencpus.build_custom_cpu.name }} {{ chosencpus.build_custom_cpu.number_of_cores }}Cores {{ chosencpus.build_custom_cpu.clock_speed }}GHz
+                </span>
+                ?
+            </h1>
+        {% endif %}
 
-        {% csrf_token %}
-        {{ form.as_p }}
+        <form method="post">
 
-        <a href="{% url 'detail_cpu' pk=object.pk %}">Back</a>
-        <input type="submit" value="Delete">
+            {% csrf_token %}
+            {{ form.as_p }}
 
-    </form>
+            <a href="{% url 'detail_cpu' pk=object.pk %}" class="link-back">Back</a>
+            <input type="submit" class="link-delete" value="Delete">
+
+        </form>
+
+    </section>
 
 {% endblock %}

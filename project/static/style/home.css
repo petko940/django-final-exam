@@ -3,3 +3,17 @@ body.home {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.like-button img {
+    width: 50px;
+}
+
+.like-button {
+    background-color: initial;
+    border: none;
+}
+
+.like-button:hover {
+    background-color: initial;
+    border: none;
+}
