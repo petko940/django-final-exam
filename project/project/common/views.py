@@ -106,5 +106,3 @@ def like_pc(request, pc_id):
         pc.likes.add(user)
 
     return redirect(request.META.get('HTTP_REFERER', 'home') + '#pc-' + str(pc.id))
-
-

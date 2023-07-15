@@ -8,39 +8,44 @@
     {% if user.is_authenticated %}
         Username: {{ user.username }}
     {% else %}
-        Login to build and show your PC
+        <h1 class="home-title">Login to build and show your PC</h1>
     {% endif %}
 
-    <div class="show-pc">
-        {% for pc in show_pc %}
-            <div class="pc">
+    {% if show_pc %}
+        <div class="show-pc">
+            {% for pc in show_pc %}
+                <div class="pc">
 
-                <div class="pc-text">
-                    <p>PC by {{ pc.user }}</p>
-                    <p>CPU: {{ pc.choose_cpu }}</p>
-                    <p>GPU: {{ pc.choose_gpu }}</p>
-                    <p>RAM: {{ pc.choose_ram }}</p>
-                    <p>Storage: {{ pc.choose_storage }}</p>
-                    <p>Motherboard: {{ pc.choose_motherboards }}</p>
-                    <p>Likes: {{ pc.likes.count }}</p>
+                    <div class="pc-text">
+                        <p>PC by <span style="color: greenyellow; font-size: 25px"> {{ pc.user }} </span></p>
+                        <p>CPU: {{ pc.choose_cpu }}</p>
+                        <p>GPU: {{ pc.choose_gpu }}</p>
+                        <p>RAM: {{ pc.choose_ram }}</p>
+                        <p>Storage: {{ pc.choose_storage }}</p>
+                        <p>Motherboard: {{ pc.choose_motherboards }}</p>
+                        <p>Likes: {{ pc.likes.count }}</p>
+                    </div>
+
+                    <form method="POST" action="{% url 'like_pc' pc.id %}">
+                        {% csrf_token %}
+                        {% if user in pc.likes.all %}
+                            <button type="submit" class="like-button">
+                                <img src="{% static 'images/like.png' %}" alt="">
+                            </button>
+                        {% else %}
+                            <button type="submit" class="like-button">
+                                <img src="{% static 'images/unlike.png' %}" alt="">
+                            </button>
+                        {% endif %}
+                    </form>
+
                 </div>
-
-                <form method="POST" action="{% url 'like_pc' pc.id %}">
-                    {% csrf_token %}
-                    {% if user in pc.likes.all %}
-                        <button type="submit" class="like-button">
-                            <img src="{% static 'images/like.png' %}" alt="">
-                        </button>
-                    {% else %}
-                        <button type="submit" class="like-button">
-                            <img src="{% static 'images/unlike.png' %}" alt="">
-                        </button>
-                    {% endif %}
-                </form>
-
-            </div>
-        {% endfor %}
-    </div>
-
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="not-chosen-components">
+            <h4> Here build already PCs will appears </h4>
+        </div>
+    {% endif %}
 
 {% endblock %}

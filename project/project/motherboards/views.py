@@ -15,7 +15,7 @@ class HomeMotherboardView(TemplateView):
 class CreateMotherboardView(LoginRequiredMixin, CreateView):
     template_name = 'motherboards/choose-motherboard.html'
     form_class = CreateMotherboardForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('home_motherboard')
 
     def form_valid(self, form):
         form.instance.user = self.request.user

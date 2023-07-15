@@ -30,7 +30,8 @@
         <p>No PC selected.</p>
         <a href="{% url 'choose_pc' request.user.username %}">Choose PC</a>
     {% endif %}
-                    <a href="{% url 'profile' request.user.username %}">Back</a>
+
+    <a href="{% url 'profile' request.user.username %}">Back</a>
 
 
 {% endblock %}
