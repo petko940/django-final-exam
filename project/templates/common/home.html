@@ -8,7 +8,7 @@
     {% if user.is_authenticated %}
         Username: {{ user.username }}
     {% else %}
-        <h1 class="home-title">Login to build and show your PC</h1>
+        <h1 class="home-title">Login to create and display your computer</h1>
     {% endif %}
 
     {% if show_pc %}
@@ -17,7 +17,7 @@
                 <div class="pc">
 
                     <div class="pc-text">
-                        <p>PC by <span style="color: greenyellow; font-size: 25px"> {{ pc.user }} </span></p>
+                        <p>PC by <a href="{% url 'profile' pc.user %}" class="username-link"> <span class="username">  {{ pc.user }} </span> </a> </p>
                         <p>CPU: {{ pc.choose_cpu }}</p>
                         <p>GPU: {{ pc.choose_gpu }}</p>
                         <p>RAM: {{ pc.choose_ram }}</p>
@@ -44,7 +44,7 @@
         </div>
     {% else %}
         <div class="not-chosen-components">
-            <h4> Here build already PCs will appears </h4>
+            <h4>Already built PCs will appear here</h4>
         </div>
     {% endif %}
 

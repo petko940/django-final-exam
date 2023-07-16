@@ -21,23 +21,28 @@ class ShowPC(models.Model):
     )
     choose_cpu = models.ForeignKey(
         to=ChosenCpus,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='CPU',
     )
     choose_gpu = models.ForeignKey(
         to=ChosenGpus,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='GPU',
     )
     choose_ram = models.ForeignKey(
         to=RAM,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='RAM',
     )
     choose_motherboards = models.ForeignKey(
         to=Motherboard,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='Motherboard',
     )
     choose_storage = models.ForeignKey(
         to=Storage,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='Storage',
     )
     likes = models.ManyToManyField(
         to=User,

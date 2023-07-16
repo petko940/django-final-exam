@@ -14,7 +14,7 @@ class HomeRamView(TemplateView):
 class CreateRamView(LoginRequiredMixin, CreateView):
     template_name = 'ram/choose-ram.html'
     form_class = RAMForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('home_ram')
 
     def form_valid(self, form):
         form.instance.user = self.request.user

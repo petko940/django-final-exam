@@ -9,7 +9,7 @@
     flex: 1;
 }
 
-.components-section .section-title  {
+.components-section .section-title {
     margin-top: 20px;
     font-size: 30px;
     text-align: center;
@@ -28,4 +28,78 @@
 
 .data {
     margin: 0;
+}
+
+.pc-text .username {
+    color: #4fff8e;
+    font-weight: bold;
+    text-shadow: #0e5e00 1px 1px 0;
+    font-size: 25px;
+}
+
+.pc-text .username-link {
+    text-decoration: none;
+}
+
+.choose-pc-to-show {
+    margin-bottom: 40px;
+    text-align: center;
+    margin-top: 55px;
+}
+
+.choose-pc-to-show a {
+    padding: 10px 20px;
+    background-color: rgb(210, 236, 250);
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: Ebrima, sans-serif;
+}
+
+.choose-pc-to-show a:hover {
+    background-color: #ffffff;
+}
+
+.choose-pc {
+    border: 1px solid #077c00;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 55px auto;
+    max-width: 400px;
+    text-align: center;
+    font-size: 25px;
+    font-family: Georgia, sans-serif;
+    background-color: rgba(255, 255, 255, 0.11);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.choose-pc .form-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 5px 0 0;
+    font-size: 20px;
+}
+
+.choose-pc form select {
+    display: block;
+    width: 350px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.choose-pc form .form-field {
+    text-align: center; /* Add this line */
+}
+
+.choose-pc .user {
+    margin-bottom: 15px;
 }

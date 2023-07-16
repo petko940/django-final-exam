@@ -189,6 +189,10 @@ body.accounts {
     background-color: #c90000;
 }
 
+.profile-details {
+    text-align: center;
+}
+
 .profile-details .button {
     display: inline-block;
     padding: 8px 16px;

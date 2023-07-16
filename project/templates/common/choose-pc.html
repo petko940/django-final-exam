@@ -4,15 +4,32 @@
 
 {% block content %}
 
-    <form method="post">
+    <div class="choose-pc">
+        <form method="post">
 
-        {{ user }}
-        {% csrf_token %}
-        {{ form.as_p }}
+            {% csrf_token %}
 
-        <a href="{% url 'profile' request.user.username %}">Back</a>
-        <button class="select-pc" type="submit">Done</button>
+            <div class="user">
+                {{ user }}
+            </div>
 
-    </form>
+            {% for field in form %}
+                <div class="form-field">
+                    {{ field.label }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="error-message">
+                            {{ field.errors|join:", " }}
+                        </div>
+                    {% endif %}
+                    <br>
+                </div>
+            {% endfor %}
+
+            <a href="{% url 'profile' request.user.username %}" class="link-back">Back</a>
+            <button class="link-edit" type="submit">Done</button>
+
+        </form>
+    </div>
 
 {% endblock %}

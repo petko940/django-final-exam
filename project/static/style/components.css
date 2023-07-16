@@ -17,12 +17,24 @@
 
 }
 
+.link-back:hover {
+    background-color: #00be00;
+}
+
 .link-edit {
     background-color: darkblue;
 }
 
+.link-edit:hover {
+    background-color: #0000d2;
+}
+
 .link-delete {
     background-color: darkred;
+}
+
+.link-delete:hover {
+    background-color: #c20000;
 }
 
 .components-details {
