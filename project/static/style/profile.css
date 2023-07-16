@@ -95,11 +95,40 @@
     text-align: center;
 }
 
-
 .choose-pc form .form-field {
-    text-align: center; /* Add this line */
+    text-align: center;
 }
 
 .choose-pc .user {
     margin-bottom: 15px;
+}
+
+.pc-show {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pc-show .pc-show-box {
+    border: 1px solid #077c00;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 33%;
+    text-align: center;
+    font-size: 25px;
+    font-family: Georgia, sans-serif;
+    background-color: rgba(255, 255, 255, 0.11);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.show-pc-text {
+    text-align: center;
+    font-size: 25px;
+    font-family: Georgia, sans-serif;
+    margin-top: -45px;
+}
+
+.show-pc-text .username {
+    color: #00a83c;
+    font-size: 45px;
 }

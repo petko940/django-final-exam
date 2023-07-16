@@ -21,8 +21,9 @@ body.home {
 
 .pc-text {
     font-family: Georgia, serif;
-
+    font-size: 20px;
 }
+
 .pc .like-button img {
     width: 30px;
 }

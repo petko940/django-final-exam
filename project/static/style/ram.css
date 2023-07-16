@@ -114,7 +114,7 @@
     background-color: rgb(136, 165, 202);
     text-decoration: none;
     font-size: 25px;
-    font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+    font-family: 'Consolas', sans-serif;
     border-radius: 4px;
     align-items: center;
 }

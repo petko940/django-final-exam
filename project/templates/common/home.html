@@ -5,9 +5,7 @@
 
 {% block content %}
 
-    {% if user.is_authenticated %}
-        Username: {{ user.username }}
-    {% else %}
+    {% if not user.is_authenticated %}
         <h1 class="home-title">Login to create and display your computer</h1>
     {% endif %}
 
@@ -26,6 +24,7 @@
                         <p>Likes: {{ pc.likes.count }}</p>
                     </div>
 
+                {% if user.is_authenticated %}
                     <form method="POST" action="{% url 'like_pc' pc.id %}">
                         {% csrf_token %}
                         {% if user in pc.likes.all %}
@@ -38,6 +37,9 @@
                             </button>
                         {% endif %}
                     </form>
+                    {% else %}
+                    <p class="pc-text">Login to like</p>
+                {% endif %}
 
                 </div>
             {% endfor %}
