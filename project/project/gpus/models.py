@@ -50,6 +50,9 @@ class AllGpus(models.Model):
         null=True
     )
 
+    def __str__(self):
+        return f'{self.name}'
+
 
 class ChosenGpus(models.Model):
     user = models.ForeignKey(
@@ -63,3 +66,6 @@ class ChosenGpus(models.Model):
 
     def __str__(self):
         return f'{self.chosen_gpu.name} {self.chosen_gpu.memory_size}GB'
+
+    class Meta:
+        verbose_name_plural = 'Chosen GPUs'

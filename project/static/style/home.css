@@ -17,6 +17,11 @@ body.home {
     text-align: center;
     border: 1px solid #00691a;
     padding: 10px;
+    transition: box-shadow 1s ease;
+}
+
+.pc:hover {
+    box-shadow: 0 0 20px rgba(0, 58, 9, 0.44);
 }
 
 .pc-text {

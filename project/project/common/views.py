@@ -1,10 +1,7 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
-from django.views import View
 from django.views.decorators.http import require_POST
 from django.views.generic import TemplateView, CreateView, DeleteView, DetailView
 
@@ -94,7 +91,6 @@ class DeleteSelectedPCView(LoginRequiredMixin, DeleteView):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})
 
 
-@login_required
 @require_POST
 def like_pc(request, pc_id):
     pc = get_object_or_404(ShowPC, id=pc_id)

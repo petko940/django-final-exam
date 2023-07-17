@@ -6,7 +6,7 @@
 
     {% if request.user.username == user.username %}
         <div class="profile-start">
-            <h1>Hello {{ user.username }}</h1>
+            <h1>Hello, {{ user.username }}</h1>
         </div>
     {% endif %}
 
@@ -22,6 +22,7 @@
                 <h2>You must have at least one of each component to be able to display it</h2>
             </div>
         {% endif %}
+
     {% endif %}
 
     {% if cpus or gpus or rams or storages or motherboards %}

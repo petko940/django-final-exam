@@ -45,6 +45,9 @@ class AllCpus(models.Model):
         null=True
     )
 
+    def __str__(self):
+        return self.name
+
 
 class CustomCpu(models.Model):
     name = models.CharField(
@@ -94,6 +97,9 @@ class CustomCpu(models.Model):
             self.manufacturer = self.manufacturer.capitalize()
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return self.name
+
 
 class ChosenCpus(models.Model):
     user = models.ForeignKey(
@@ -115,6 +121,9 @@ class ChosenCpus(models.Model):
         if self.chosen_cpu:
             output = f'{self.chosen_cpu.name} {self.chosen_cpu.cores}Cores {self.chosen_cpu.base_frequency}GHz'
             return output
-        elif self.build_custom_cpu:
+        else:
             output = f'{self.build_custom_cpu.name} {self.build_custom_cpu.number_of_cores}Cores {self.build_custom_cpu.clock_speed}GHz'
             return output
+
+    class Meta:
+        verbose_name_plural = 'Chosen CPUs'

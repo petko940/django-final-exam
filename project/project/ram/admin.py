@@ -5,5 +5,5 @@ from project.ram.models import RAM
 
 # Register your models here.
 @admin.register(RAM)
-class ShowPCAdmin(admin.ModelAdmin):
-    pass
+class RAMAdmin(admin.ModelAdmin):
+    list_display = ['user', 'brand', 'capacity', 'memory_type', 'speed']

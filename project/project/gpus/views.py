@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, DeleteView
 
@@ -52,31 +52,6 @@ class ChooseGpuListView(LoginRequiredMixin, ListView):
                 F(sort_by).asc(nulls_last=True) if sort_order == 'asc' else F(sort_by).desc(nulls_last=True))
 
         return queryset
-        # if sort_by == 'name':
-        #     queryset = queryset.order_by(F('name').asc(nulls_last=True) if sort_order == 'asc' else F('name').desc(nulls_last=True))
-        # elif sort_by == 'manufacturer':
-        #     queryset = queryset.order_by(
-        #         F('manufacturer').asc(nulls_last=True) if sort_order == 'asc' else F('manufacturer').desc(
-        #             nulls_last=True))
-        # elif sort_by == 'release_year':
-        #     queryset = queryset.order_by(
-        #         F('release_year').asc(nulls_last=True) if sort_order == 'asc' else F('release_year').desc(
-        #             nulls_last=True))
-        # elif sort_by == 'memory_size':
-        #     queryset = queryset.order_by(
-        #         F('memory_size').asc(nulls_last=True) if sort_order == 'asc' else F('memory_size').desc(
-        #             nulls_last=True))
-        # elif sort_by == 'gpu_clock':
-        #     queryset = queryset.order_by(
-        #         F('gpu_clock').asc(nulls_last=True) if sort_order == 'asc' else F('gpu_clock').desc(nulls_last=True))
-        # elif sort_by == 'memory_clock':
-        #     queryset = queryset.order_by(
-        #         F('memory_clock').asc(nulls_last=True) if sort_order == 'asc' else F('memory_clock').desc(
-        #             nulls_last=True))
-        # elif sort_by == 'memory_type':
-        #     queryset = queryset.order_by(
-        #         F('memory_type').asc(nulls_last=True) if sort_order == 'asc' else F('memory_type').desc(
-        #             nulls_last=True))
 
     def post(self, request, *args, **kwargs):
         gpu_id = self.request.POST.get('gpu_id')

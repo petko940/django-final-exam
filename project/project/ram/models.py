@@ -117,3 +117,6 @@ class RAM(models.Model):
 
     def __str__(self):
         return f'{self.brand} {self.capacity}GB {self.memory_type} {self.speed}MHz'
+
+    class Meta:
+        verbose_name_plural = 'RAM'
