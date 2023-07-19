@@ -13,7 +13,6 @@ class ShowPCAdmin(admin.ModelAdmin):
         'choose_motherboards',
         'choose_storage'
     ]
-
     exclude = ['likes']
     list_filter = [
         'user',
