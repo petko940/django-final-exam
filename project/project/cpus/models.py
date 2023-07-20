@@ -77,6 +77,7 @@ class CustomCpu(models.Model):
         ],
     )
     max_ram = models.CharField(
+        max_length=30,
         choices=(
             ('1GB', '1GB'),
             ('2GB', '2GB'),

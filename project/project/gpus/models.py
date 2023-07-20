@@ -5,6 +5,7 @@ from django.db import models
 # Create your models here.
 class AllGpus(models.Model):
     manufacturer = models.CharField(
+        max_length=20,
         choices=(
             ('Nvidia', 'Nvidia'),
             ('AMD', 'AMD'),
@@ -45,6 +46,7 @@ class AllGpus(models.Model):
         null=True
     )
     memory_type = models.CharField(
+        max_length=20,
         verbose_name='Memory type',
         blank=True,
         null=True
