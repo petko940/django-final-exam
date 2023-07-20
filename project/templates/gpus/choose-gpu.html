@@ -52,10 +52,12 @@
                         <td>{{ gpu.manufacturer }}</td>
                         <td>{{ gpu.name }}</td>
                         <td>{{ gpu.release_year }}</td>
-                        {% if gpu.memory_size %}
-                        <td>{{ gpu.memory_size }}GB</td>
+                        {% if gpu.memory_size > 1 %}
+                            <td>{{ gpu.memory_size|floatformat:0 }}GB</td>
+                        {% elif gpu.memory_size %}
+                            <td>{{ gpu.memory_size }}GB</td>
                         {% else %}
-                        <td>{{ gpu.memory_size }}</td>
+                            <td>{{ gpu.memory_size }}</td>
                         {% endif %}
                         <td>{{ gpu.gpu_clock }}MHz</td>
                         <td>{{ gpu.memory_clock }}MHz</td>

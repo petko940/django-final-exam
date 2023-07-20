@@ -7,3 +7,4 @@ from project.ram.models import RAM
 @admin.register(RAM)
 class RAMAdmin(admin.ModelAdmin):
     list_display = ['user', 'brand', 'capacity', 'memory_type', 'speed']
+    search_fields = ['user__username']

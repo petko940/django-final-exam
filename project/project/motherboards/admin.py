@@ -7,3 +7,4 @@ from project.motherboards.models import Motherboard
 @admin.register(Motherboard)
 class MotherboardAdmin(admin.ModelAdmin):
     list_display = ['user', 'manufacturer', 'model', 'form_factor', 'socket', 'user']
+    search_fields = ['user__username']

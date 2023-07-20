@@ -14,6 +14,7 @@ class StorageAdmin(admin.ModelAdmin):
         'read_speed',
         'write_speed'
     ]
+    search_fields = ['type']
 
     def display_capacity(self, obj):
         return f'{obj.capacity} GB'

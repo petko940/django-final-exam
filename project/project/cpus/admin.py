@@ -5,3 +5,5 @@ from .models import ChosenCpus
 @admin.register(ChosenCpus)
 class ChosenCpusAdmin(admin.ModelAdmin):
     list_display = ['user', 'chosen_cpu', 'build_custom_cpu']
+    search_fields = ['user__username']
+

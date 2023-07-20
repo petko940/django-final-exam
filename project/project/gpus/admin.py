@@ -7,3 +7,4 @@ from project.gpus.models import ChosenGpus
 @admin.register(ChosenGpus)
 class ChosenGpusAdmin(admin.ModelAdmin):
     list_display = ['user', 'chosen_gpu']
+    search_fields = ['user__username']
