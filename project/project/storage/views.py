@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView
 
+from project.cpus.views import UserAccessMixin
 from project.storage.forms import ChooseStorageForm
 from project.storage.models import Storage
 
@@ -21,12 +22,12 @@ class ChooseStorageView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class DetailsStorageView(LoginRequiredMixin, DetailView):
+class DetailsStorageView(UserAccessMixin, LoginRequiredMixin, DetailView):
     template_name = 'storage/details-storage.html'
     model = Storage
 
 
-class EditStorageView(LoginRequiredMixin, UpdateView):
+class EditStorageView(UserAccessMixin, LoginRequiredMixin, UpdateView):
     template_name = 'storage/edit-storage.html'
     model = Storage
     form_class = ChooseStorageForm
@@ -35,7 +36,7 @@ class EditStorageView(LoginRequiredMixin, UpdateView):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})
 
 
-class DeleteStorageView(LoginRequiredMixin, DeleteView):
+class DeleteStorageView(UserAccessMixin, LoginRequiredMixin, DeleteView):
     template_name = 'storage/delete-storage.html'
     model = Storage
 

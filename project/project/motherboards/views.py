@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, UpdateView, DetailView, DeleteView
 
+from project.cpus.views import UserAccessMixin
 from project.motherboards.forms import CreateMotherboardForm
 from project.motherboards.models import Motherboard
 
@@ -22,12 +23,12 @@ class CreateMotherboardView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class DetailsMotherboardView(LoginRequiredMixin, DetailView):
+class DetailsMotherboardView(UserAccessMixin, LoginRequiredMixin, DetailView):
     template_name = 'motherboards/details-motherboard.html'
     model = Motherboard
 
 
-class EditMotherboardView(LoginRequiredMixin, UpdateView):
+class EditMotherboardView(UserAccessMixin, LoginRequiredMixin, UpdateView):
     template_name = 'motherboards/edit-motherboard.html'
     model = Motherboard
     form_class = CreateMotherboardForm
@@ -36,7 +37,7 @@ class EditMotherboardView(LoginRequiredMixin, UpdateView):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})
 
 
-class DeleteMotherboardView(LoginRequiredMixin, DeleteView):
+class DeleteMotherboardView(UserAccessMixin, LoginRequiredMixin, DeleteView):
     template_name = 'motherboards/delete-motherboard.html'
     model = Motherboard
 

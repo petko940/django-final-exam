@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, DeleteView
 
+from project.cpus.views import UserAccessMixin
 from project.gpus.forms import ChooseGpuForm
 from project.gpus.models import AllGpus, ChosenGpus
 
@@ -66,7 +67,7 @@ class ChooseGpuListView(LoginRequiredMixin, ListView):
         return redirect('home_gpu')
 
 
-class GpuDetailsView(DetailView):
+class GpuDetailsView(UserAccessMixin, DetailView):
     template_name = 'gpus/details-gpu.html'
     model = ChosenGpus
 
@@ -81,7 +82,7 @@ class GpuDetailsView(DetailView):
         return context
 
 
-class DeleteGpuView(DeleteView):
+class DeleteGpuView(UserAccessMixin, DeleteView):
     model = ChosenGpus
     template_name = 'gpus/delete-gpu.html'
 

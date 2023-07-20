@@ -8,6 +8,14 @@ from project.cpus.forms import ChooseCpuListForm, DeleteCpuForm, CustomCpuForm
 from project.cpus.models import AllCpus, ChosenCpus, CustomCpu
 
 
+class UserAccessMixin:
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if request.user != obj.user:
+            return redirect('access_denied_view')
+        return super().dispatch(request, *args, **kwargs)
+
+
 class HomeCpuView(TemplateView):
     template_name = 'cpus/cpu.html'
 
@@ -117,7 +125,7 @@ class BuildCustomCpuView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class CpuInformationView(LoginRequiredMixin, DetailView):
+class CpuInformationView(UserAccessMixin, LoginRequiredMixin, DetailView):
     template_name = 'cpus/details-cpu.html'
     model = ChosenCpus
 
@@ -139,7 +147,7 @@ class CpuInformationView(LoginRequiredMixin, DetailView):
         return context
 
 
-class DeleteCpuView(LoginRequiredMixin, DeleteView):
+class DeleteCpuView(UserAccessMixin, LoginRequiredMixin, DeleteView):
     model = ChosenCpus
     template_name = 'cpus/delete-cpu.html'
 
@@ -147,7 +155,7 @@ class DeleteCpuView(LoginRequiredMixin, DeleteView):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})
 
 
-class EditCustomCpusView(LoginRequiredMixin, UpdateView):
+class EditCustomCpusView(UserAccessMixin, LoginRequiredMixin, UpdateView):
     model = ChosenCpus
     template_name = 'cpus/edit-custom-cpu.html'
     form_class = CustomCpuForm
