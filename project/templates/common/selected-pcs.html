@@ -32,8 +32,11 @@
         </div>
 
     {% else %}
-        <p>No PC selected.</p>
-        <a href="{% url 'choose_pc' request.user.username %}">Choose PC</a>
+        <div class="selected-pc">
+            <p>No PC selected.</p>
+
+            <a class="choose-pc-button" href="{% url 'choose_pc' request.user.username %}">Choose PC</a>
+        </div>
     {% endif %}
 
 {% endblock %}

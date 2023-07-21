@@ -60,7 +60,7 @@ class ChoosePCToShowView(LoginRequiredMixin, CreateView):
 
 
 class SelectedPCView(LoginRequiredMixin, TemplateView):
-    template_name = 'common/pc.html'
+    template_name = 'common/selected-pcs.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
