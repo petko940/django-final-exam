@@ -51,6 +51,10 @@
                                 <h3>Choose at least one</h3>
                                 <a href="{% url 'choose_cpu' %}">choose</a>
                             </div>
+                        {% else %}
+                            <div class="not-selected">
+                                <h3>Not selected</h3>
+                            </div>
                         {% endif %}
 
                     {% endif %}
@@ -78,6 +82,10 @@
                             <div class="not-selected">
                                 <h3>Choose at least one</h3>
                                 <a href="{% url 'choose_gpu' %}">choose</a>
+                            </div>
+                        {% else %}
+                            <div class="not-selected">
+                                <h3>Not selected</h3>
                             </div>
                         {% endif %}
 
@@ -108,6 +116,10 @@
                                 <h3>Choose at least one</h3>
                                 <a href="{% url 'choose_ram' %}">choose</a>
                             </div>
+                        {% else %}
+                            <div class="not-selected">
+                                <h3>Not selected</h3>
+                            </div>
                         {% endif %}
 
                     {% endif %}
@@ -137,6 +149,10 @@
                                 <h3>Choose at least one</h3>
                                 <a href="{% url 'create_motherboard' %}">choose</a>
                             </div>
+                        {% else %}
+                            <div class="not-selected">
+                                <h3>Not selected</h3>
+                            </div>
                         {% endif %}
 
                     {% endif %}
@@ -163,6 +179,10 @@
                             <div class="not-selected">
                                 <h3>Choose at least one</h3>
                                 <a href="{% url 'choose_storage' %}">choose</a>
+                            </div>
+                        {% else %}
+                            <div class="not-selected">
+                                <h3>Not selected</h3>
                             </div>
                         {% endif %}
                     {% endif %}
