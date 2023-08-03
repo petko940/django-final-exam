@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView
 
 from project.cpus.views import UserAccessMixin
-from project.ram.forms import RAMForm, DeleteRamForm
+from project.ram.forms import RAMForm
 from project.ram.models import RAM
 
 

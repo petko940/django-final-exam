@@ -1,10 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView, CreateView, DeleteView, DetailView, UpdateView
 
-from project.cpus.forms import ChooseCpuListForm, DeleteCpuForm, CustomCpuForm
+from project.cpus.forms import ChooseCpuListForm, CustomCpuForm
 from project.cpus.models import AllCpus, ChosenCpus, CustomCpu
 
 
