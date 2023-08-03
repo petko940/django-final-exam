@@ -15,31 +15,28 @@
                 <div class="pc">
 
                     <div class="pc-text">
-                        <p>PC by <a href="{% url 'profile' pc.user %}" class="username-link"> <span class="username">  {{ pc.user }} </span> </a> </p>
+                        <p>PC by <a href="{% url 'profile' pc.user %}" class="username-link"> <span
+                                class="username">  {{ pc.user }} </span> </a></p>
                         <p>CPU: {{ pc.choose_cpu }}</p>
                         <p>GPU: {{ pc.choose_gpu }}</p>
                         <p>RAM: {{ pc.choose_ram }}</p>
                         <p>Storage: {{ pc.choose_storage }}</p>
                         <p>Motherboard: {{ pc.choose_motherboards }}</p>
-                        <p>Likes: {{ pc.likes.count }}</p>
+                        {#                        <p>Likes: {{ pc.likes.count }}</p>#}
+                        <p>Likes: <span id="likes-count-{{ pc.id }}">{{ pc.likes.count }}</span></p>
                     </div>
 
-                {% if user.is_authenticated %}
-                    <form method="POST" action="{% url 'like_pc' pc.id %}">
-                        {% csrf_token %}
-                        {% if user in pc.likes.all %}
-                            <button type="submit" class="like-button">
+                    {% if user.is_authenticated %}
+                        <button class="like-button" data-pc-id="{{ pc.id }}" onclick="toggleLike({{ pc.id }})">
+                            {% if user in pc.likes.all %}
                                 <img src="{% static 'images/like.png' %}" alt="">
-                            </button>
-                        {% else %}
-                            <button type="submit" class="like-button">
+                            {% else %}
                                 <img src="{% static 'images/unlike.png' %}" alt="">
-                            </button>
-                        {% endif %}
-                    </form>
+                            {% endif %}
+                        </button>
                     {% else %}
-                    <p class="pc-text">Login to like</p>
-                {% endif %}
+                        <p class="pc-text">Login to like</p>
+                    {% endif %}
 
                 </div>
             {% endfor %}
@@ -50,4 +47,23 @@
         </div>
     {% endif %}
 
+    <script>
+        function toggleLike(pc_id) {
+            const likeButton = document.querySelector(`[data-pc-id="${pc_id}"]`);
+            const likesCount = document.querySelector(`#likes-count-${pc_id}`);
+
+            fetch(`/like_pc/${pc_id}/`, {method: 'POST', headers: {'X-CSRFToken': '{{ csrf_token }}'}})
+                .then(response => response.json())
+                .then(data => {
+                    likeButton.innerHTML = data.liked ? '<img src="{% static "images/like.png" %}" alt="Unlike">' : '<img src="{% static "images/unlike.png" %}" alt="Like">';
+                    likesCount.innerHTML = data.likes_count;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+
 {% endblock %}
+
+
+

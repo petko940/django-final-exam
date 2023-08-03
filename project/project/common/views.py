@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
+from django.http import JsonResponse
 from django.shortcuts import redirect, get_object_or_404
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
-from django.views.generic import TemplateView, CreateView, DeleteView, DetailView
+from django.views.generic import TemplateView, CreateView, DeleteView
 
 from project.common.models import ShowPC
 from project.cpus.models import ChosenCpus
@@ -91,14 +92,31 @@ class DeleteSelectedPCView(LoginRequiredMixin, DeleteView):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})
 
 
+# @require_POST
+# def like_pc(request, pc_id):
+#     pc = get_object_or_404(ShowPC, id=pc_id)
+#     user = request.user
+#
+#     if user in pc.likes.all():
+#         pc.likes.remove(user)
+#     else:
+#         pc.likes.add(user)
+#
+#     return redirect(request.META.get('HTTP_REFERER', 'home') + '#pc-' + str(pc.id))
+
+
 @require_POST
 def like_pc(request, pc_id):
     pc = get_object_or_404(ShowPC, id=pc_id)
     user = request.user
 
-    if user in pc.likes.all():
+    if pc.likes.filter(id=user.id).exists():
         pc.likes.remove(user)
+        liked = False
     else:
         pc.likes.add(user)
+        liked = True
 
-    return redirect(request.META.get('HTTP_REFERER', 'home') + '#pc-' + str(pc.id))
+    likes_count = pc.likes.count()
+
+    return JsonResponse({'liked': liked, 'likes_count': likes_count})
