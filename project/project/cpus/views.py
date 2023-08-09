@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView, CreateView, DeleteView, DetailView, UpdateView
 
@@ -155,7 +155,7 @@ class DeleteCpuView(UserAccessMixin, LoginRequiredMixin, DeleteView):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})
 
 
-class EditCustomCpusView(UserAccessMixin, LoginRequiredMixin, UpdateView):
+class EditCustomCpusView(LoginRequiredMixin, UpdateView):
     model = ChosenCpus
     template_name = 'cpus/edit-custom-cpu.html'
     form_class = CustomCpuForm
@@ -167,3 +167,12 @@ class EditCustomCpusView(UserAccessMixin, LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('profile', kwargs={'username': self.request.user.username})
+
+    def dispatch(self, request, *args, **kwargs):
+        chosen_cpu_id = self.kwargs.get('pk')
+        chosen_cpu = ChosenCpus.objects.get(id=chosen_cpu_id)
+
+        if chosen_cpu.user != request.user:
+            return redirect('access_denied_view')
+
+        return super().dispatch(request, *args, **kwargs)
