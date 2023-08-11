@@ -27,13 +27,15 @@
                     </div>
 
                     {% if user.is_authenticated %}
-                        <button class="like-button" data-pc-id="{{ pc.id }}" onclick="toggleLike({{ pc.id }})">
-                            {% if user in pc.likes.all %}
-                                <img src="{% static 'images/like.png' %}" alt="">
-                            {% else %}
-                                <img src="{% static 'images/unlike.png' %}" alt="">
-                            {% endif %}
-                        </button>
+                        {% if user != pc.user %}
+                            <button class="like-button" data-pc-id="{{ pc.id }}" onclick="toggleLike({{ pc.id }})">
+                                {% if user in pc.likes.all %}
+                                    <img src="{% static 'images/like.png' %}" alt="">
+                                {% else %}
+                                    <img src="{% static 'images/unlike.png' %}" alt="">
+                                {% endif %}
+                            </button>
+                        {% endif %}
                     {% else %}
                         <p class="pc-text">Login to like</p>
                     {% endif %}
@@ -61,6 +63,7 @@
                 .catch(error => console.error('Error:', error));
         }
     </script>
+
 
 
 {% endblock %}
