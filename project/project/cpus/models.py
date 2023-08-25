@@ -127,4 +127,4 @@ class ChosenCpus(models.Model):
             return output
 
     class Meta:
-        verbose_name_plural = 'Chosen CPUs'
+        verbose_name_plural = 'CPUs'

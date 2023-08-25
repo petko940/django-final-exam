@@ -14,7 +14,7 @@
             </div>
 
             <div class="buttons">
-                <a href="{% url 'profile' user.username %}">Back</a>
+                <a href="{% url 'profile' request.user.username %}">Back</a>
                 <button type="submit">Update</button>
             </div>
 
